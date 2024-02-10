@@ -4,6 +4,92 @@ mod markdown {
     }
 }
 
+mod template {
+    #[derive(Debug, PartialEq, Eq, strum_macros::Display)]
+    pub enum Error {
+        PlaceholderNotFound(Placeholder),
+        MappingWithoutChange(TemplateItemMapping),
+        LeftoverPlaceholders(Vec<String>),
+    }
+
+    impl std::error::Error for Error {}
+
+    #[derive(Debug, PartialEq, Eq, Clone)]
+    pub struct Placeholder(pub String);
+
+    impl std::fmt::Display for Placeholder {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+            write!(f, "{{{{ {} }}}}", self.0)
+        }
+    }
+
+    impl Placeholder {
+        pub fn new(value: &str) -> Self {
+            Self(value.to_owned())
+        }
+
+        pub fn is_contained_in(&self, template: &str) -> bool {
+            template.contains(&self.0)
+        }
+    }
+
+    #[derive(Debug, PartialEq, Eq, Clone)]
+    pub struct Replacement(pub String);
+
+    impl Replacement {
+        pub fn embed(&self, into: &str, instead_of: &str) -> String {
+            into.replace(instead_of, &self.0)
+        }
+    }
+
+    type TemplateItemMapping = (Placeholder, Replacement);
+
+    #[derive(Debug)]
+    pub struct TemplateMapping(pub Vec<TemplateItemMapping>);
+
+    lazy_static::lazy_static! {
+        static ref PLACEHOLDER_RE: regex::Regex = regex::Regex::new(r"\{\{ *[\w_]+ *\}\}").expect("placeholder ptrn should be valid");
+    }
+
+    impl TemplateMapping {
+        fn apply_mapping(
+            template_state: String,
+            (placeholder, replacement): TemplateItemMapping,
+        ) -> Result<String, Error> {
+            if !placeholder.is_contained_in(&template_state) {
+                return Err(Error::PlaceholderNotFound(placeholder));
+            }
+
+            let updated_template_state =
+                replacement.embed(&template_state, &placeholder.to_string());
+
+            if template_state == updated_template_state {
+                return Err(Error::MappingWithoutChange((placeholder, replacement)));
+            }
+
+            Ok(updated_template_state)
+        }
+
+        pub fn populate(self, template: &str) -> Result<String, Error> {
+            let populated_template = self
+                .0
+                .into_iter()
+                .try_fold(String::from(template), Self::apply_mapping)?;
+
+            if PLACEHOLDER_RE.is_match(&populated_template) {
+                let leftover_placeholders = PLACEHOLDER_RE
+                    .find_iter(&populated_template)
+                    .map(|m| m.as_str().to_owned())
+                    .collect();
+
+                return Err(Error::LeftoverPlaceholders(leftover_placeholders));
+            }
+
+            Ok(populated_template)
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     // tests already panic on `assert`s, so we might as well use unwrap.
@@ -22,4 +108,104 @@ mod tests {
         assert!(received_html.is_ok());
         assert_eq!(received_html.unwrap(), expected_html);
     }
+
+    // region: template
+
+    #[test]
+    fn test_templ_placeholder_to_string() {
+        let placeholder = template::Placeholder::new("key");
+        assert_eq!(placeholder.to_string(), "{{ key }}");
+    }
+
+    #[test]
+    fn test_templ_placeholder_is_contained_in() {
+        let placeholder = template::Placeholder::new("key");
+        let templ = "Persistance is the {{ key }} to success";
+
+        assert!(placeholder.is_contained_in(templ));
+    }
+
+    #[test]
+    fn test_templ_replacement_embedding() {
+        let placeholder = template::Placeholder::new("key");
+        let replacement = template::Replacement(String::from("secret ingredient"));
+        let templ = "Persistance is the {{ key }} to success";
+
+        assert_eq!(
+            replacement.embed(templ, &placeholder.to_string()),
+            "Persistance is the secret ingredient to success"
+        );
+    }
+
+    /// Helper function to extract data/actions common across template population tests.
+    fn test_templ_populate(mapping: template::TemplateMapping) -> Result<String, template::Error> {
+        let templ = "Hello {{ receiver }}, {{ adjective }} to meet you!";
+
+        mapping.populate(templ)
+    }
+
+    /// Correct template mapping for example in helper function
+    fn default_template_mapping() -> template::TemplateMapping {
+        use template::{Placeholder, Replacement, TemplateMapping};
+
+        TemplateMapping(vec![
+            (
+                Placeholder::new("receiver"),
+                Replacement(String::from("Matija")),
+            ),
+            (
+                Placeholder::new("adjective"),
+                Replacement(String::from("pleased")),
+            ),
+        ])
+    }
+
+    #[test]
+    fn test_templ_populate_correct() {
+        let populated_template = test_templ_populate(default_template_mapping());
+
+        assert!(populated_template.is_ok());
+        assert_eq!(
+            populated_template.unwrap(),
+            "Hello Matija, pleased to meet you!"
+        );
+    }
+
+    #[test]
+    fn test_templ_populate_no_placeholder() {
+        use template::{Placeholder, Replacement};
+
+        // add extra placeholder to default (correct) ones
+        let missing_placeholder = Placeholder::new("missing");
+        let mut mapping = default_template_mapping();
+        mapping.0.push((
+            missing_placeholder.clone(),
+            Replacement(String::from("value")),
+        ));
+
+        let populated_template = test_templ_populate(mapping);
+
+        assert!(populated_template.is_err());
+        assert_eq!(
+            populated_template.unwrap_err(),
+            template::Error::PlaceholderNotFound(missing_placeholder)
+        );
+    }
+
+    #[test]
+    fn test_templ_populate_leftover_placeholder() {
+        // remove placeholder from default (correct) ones
+        let mut mapping = default_template_mapping();
+        mapping.0.pop();
+
+        let populated_template = test_templ_populate(mapping);
+
+        assert!(populated_template.is_err());
+        assert_eq!(
+            populated_template.unwrap_err(),
+            template::Error::LeftoverPlaceholders(vec![String::from("{{ adjective }}")])
+        );
+    }
+
+    // endregion
 }

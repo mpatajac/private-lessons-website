@@ -8,6 +8,10 @@ edition = "2021"
 [dependencies]
 anyhow = "1"
 markdown = "1.0.0-alpha"
+strum = "0.26"
+strum_macros = "0.26"
+regex = "1"
+lazy_static = "1.4"
 
 
 [lints.clippy]
@@ -15,3 +19,4 @@ pedantic = "warn"
 nursery = "warn"
 unwrap_used = "warn"
 missing_errors_doc = "allow"
+module_name_repetitions = "allow"
