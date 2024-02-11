@@ -35,7 +35,7 @@ pub mod post_metadata {
                 .lines()
                 .next()
                 .ok_or_else(|| io::Error::other("Could not read first line from post"))?
-                .map(|line| line.trim_start_matches("# ").to_string())
+                .map(|line| line.trim_start_matches("# ").trim().to_string())
         }
     }
 }
