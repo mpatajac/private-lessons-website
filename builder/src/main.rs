@@ -76,9 +76,7 @@ fn build_posts_template(posts_metadata: &[PostMetadata]) -> Result<()> {
 
     let mapping: TemplateMapping = vec![("items", summary_elements)].into();
 
-    let template_path: PathBuf = Template::Posts.into();
-    let template = std::fs::read_to_string(template_path)?;
-    let populated_template = mapping.populate(template)?;
+    let populated_template = populate_page_template(mapping, Template::Posts)?;
 
     std::fs::write(POSTS_FILE, populated_template)?;
 
@@ -93,7 +91,11 @@ fn populate_post_summary_template(post_metadata: &PostMetadata) -> Result<String
     ]
     .into();
 
-    let template_path: PathBuf = Template::PostSummary.into();
+    populate_page_template(mapping, Template::PostSummary)
+}
+
+fn populate_page_template(mapping: TemplateMapping, page_template: Template) -> Result<String> {
+    let template_path: PathBuf = page_template.into();
     let template = std::fs::read_to_string(template_path)?;
     let populated_template = mapping.populate(template)?;
 
