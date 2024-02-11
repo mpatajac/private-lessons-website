@@ -1,3 +1,45 @@
+pub mod post_metadata {
+    use std::{
+        fs::{self, File},
+        io::{self, BufRead, BufReader},
+    };
+
+    use chrono::{DateTime, NaiveDate as Date, Utc};
+
+    #[derive(Debug, Clone)]
+    pub struct PostMetadata {
+        pub file_name: String,
+        pub title: String,
+        pub date_created: Date,
+    }
+
+    impl PostMetadata {
+        pub fn collect(file_name: &str) -> io::Result<Self> {
+            Ok(Self {
+                file_name: file_name.to_string(),
+                title: Self::extract_post_title(file_name)?,
+                date_created: Self::determine_date_created(file_name)?,
+            })
+        }
+
+        fn determine_date_created(file_name: &str) -> io::Result<Date> {
+            fs::metadata(file_name)?
+                .created()
+                .map(|system_time| Into::<DateTime<Utc>>::into(system_time).date_naive())
+        }
+
+        fn extract_post_title(file_name: &str) -> io::Result<String> {
+            let file = File::open(file_name)?;
+
+            BufReader::new(file)
+                .lines()
+                .next()
+                .ok_or_else(|| io::Error::other("Could not read first line from post"))?
+                .map(|line| line.trim_start_matches("# ").to_string())
+        }
+    }
+}
+
 mod markdown {
     pub fn to_html(content: &str) -> Result<String, String> {
         markdown::to_html_with_options(content, &markdown::Options::gfm())
@@ -204,6 +246,39 @@ mod tests {
         assert_eq!(
             populated_template.unwrap_err(),
             template::Error::LeftoverPlaceholders(vec![String::from("{{ adjective }}")])
+        );
+    }
+
+    // endregion
+
+    // region: post_metadata
+
+    #[test]
+    fn test_post_metadata_collection() {
+        const TEST_FILE_PATH: &str = "./test_post_metadata_collection.md";
+        const TEST_FILE_CONTENT: &str = "# Test post metadata collection
+
+Paragraph inside test file.
+";
+
+        // setup: create dummy file
+        std::fs::write(TEST_FILE_PATH, TEST_FILE_CONTENT).unwrap();
+
+        let post_metadata = post_metadata::PostMetadata::collect(TEST_FILE_PATH);
+
+        // cleanup: remove dummy file
+        // NOTE: cleanup before assertions (in case of failed assertions)
+        std::fs::remove_file(TEST_FILE_PATH).unwrap();
+
+        assert!(post_metadata.is_ok());
+
+        let post_metadata = post_metadata.unwrap();
+
+        assert_eq!(post_metadata.file_name, TEST_FILE_PATH);
+        assert_eq!(post_metadata.title, "Test post metadata collection");
+        assert_eq!(
+            post_metadata.date_created,
+            chrono::Local::now().date_naive()
         );
     }
 
