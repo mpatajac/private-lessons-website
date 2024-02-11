@@ -1,3 +1,5 @@
+pub use template::TemplateMapping;
+
 pub mod post_metadata {
     use std::{
         fs::{self, File},
@@ -23,6 +25,11 @@ pub mod post_metadata {
                 title: Self::extract_post_title(file_path)?,
                 date_created: Self::determine_date_created(file_path)?,
             })
+        }
+
+        #[must_use]
+        pub fn formatted_date(&self) -> String {
+            self.date_created.format("%d/%m/%Y").to_string()
         }
 
         fn extract_file_name(file_path: &str) -> io::Result<String> {
@@ -125,11 +132,8 @@ mod template {
             Ok(updated_template_state)
         }
 
-        pub fn populate(self, template: &str) -> Result<String, Error> {
-            let populated_template = self
-                .0
-                .into_iter()
-                .try_fold(String::from(template), Self::apply_mapping)?;
+        pub fn populate(self, template: String) -> Result<String, Error> {
+            let populated_template = self.0.into_iter().try_fold(template, Self::apply_mapping)?;
 
             if PLACEHOLDER_RE.is_match(&populated_template) {
                 let leftover_placeholders = PLACEHOLDER_RE
@@ -141,6 +145,14 @@ mod template {
             }
 
             Ok(populated_template)
+        }
+    }
+
+    impl From<Vec<(&str, String)>> for TemplateMapping {
+        fn from(items: Vec<(&str, String)>) -> Self {
+            let mapping = |(k, v)| (Placeholder::new(k), Replacement(v));
+
+            Self(items.into_iter().map(mapping).collect())
         }
     }
 }
@@ -194,14 +206,14 @@ mod tests {
 
     /// Helper function to extract data/actions common across template population tests.
     fn test_templ_populate(mapping: template::TemplateMapping) -> Result<String, template::Error> {
-        let templ = "Hello {{ receiver }}, {{ adjective }} to meet you!";
+        let templ = String::from("Hello {{ receiver }}, {{ adjective }} to meet you!");
 
         mapping.populate(templ)
     }
 
     /// Correct template mapping for example in helper function
     fn default_template_mapping() -> template::TemplateMapping {
-        use template::{Placeholder, Replacement, TemplateMapping};
+        use template::{Placeholder, Replacement};
 
         TemplateMapping(vec![
             (
@@ -296,5 +308,17 @@ Paragraph inside test file.
         );
     }
 
+    #[test]
+    fn test_post_metadata_formatted_date() {
+        let metadata = super::post_metadata::PostMetadata {
+            date_created: chrono::NaiveDate::parse_from_str("13-02-2024", "%d-%m-%Y").unwrap(),
+            // irrelevant to the test, so leave empty
+            file_name: String::new(),
+            path: String::new(),
+            title: String::new(),
+        };
+
+        assert_eq!(metadata.formatted_date(), "13/02/2024");
+    }
     // endregion
 }
