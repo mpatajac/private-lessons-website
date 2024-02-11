@@ -55,15 +55,15 @@ fn collect_posts_metadata(posts_dir: &Path) -> Result<Vec<PostMetadata>> {
 
 #[derive(Debug, Display)]
 #[strum(serialize_all = "snake_case")]
-enum Template {
+enum TemplateType {
     PostSummary,
     PostList,
     Post,
 }
 
-impl From<Template> for PathBuf {
-    fn from(template_name: Template) -> Self {
-        Self::from(format!("{TEMPL_DIR}/{template_name}.templ"))
+impl From<TemplateType> for PathBuf {
+    fn from(template_type: TemplateType) -> Self {
+        Self::from(format!("{TEMPL_DIR}/{template_type}.templ"))
     }
 }
 
@@ -76,7 +76,7 @@ fn build_post_list_template(posts_metadata: &[PostMetadata]) -> Result<()> {
 
     let mapping: TemplateMapping = vec![("items", summary_elements)].into();
 
-    let populated_template = populate_page_template(mapping, Template::PostList)?;
+    let populated_template = populate_page_template(mapping, TemplateType::PostList)?;
 
     std::fs::write(POST_LIST_FILE, populated_template)?;
 
@@ -91,11 +91,11 @@ fn populate_post_summary_template(post_metadata: &PostMetadata) -> Result<String
     ]
     .into();
 
-    populate_page_template(mapping, Template::PostSummary)
+    populate_page_template(mapping, TemplateType::PostSummary)
 }
 
-fn populate_page_template(mapping: TemplateMapping, page_template: Template) -> Result<String> {
-    let template_path: PathBuf = page_template.into();
+fn populate_page_template(mapping: TemplateMapping, template_type: TemplateType) -> Result<String> {
+    let template_path: PathBuf = template_type.into();
     let template = std::fs::read_to_string(template_path)?;
     let populated_template = mapping.populate(template)?;
 
