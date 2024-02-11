@@ -7,7 +7,7 @@ use strum_macros::Display;
 const POSTS_DIR: &str = "../posts";
 const PAGES_DIR: &str = "../pages";
 const TEMPL_DIR: &str = "../templates";
-const POSTS_FILE: &str = "../posts.html";
+const POST_LIST_FILE: &str = "../posts.html";
 
 fn main() {
     if let Err(error) = build_web() {
@@ -21,8 +21,8 @@ fn cleanup_generated_web() {
         std::fs::remove_dir_all(PAGES_DIR).expect("should be able to remove pages dir");
     }
 
-    if Path::new(POSTS_FILE).is_file() {
-        std::fs::remove_file(POSTS_FILE).expect("should be able to remove posts file");
+    if Path::new(POST_LIST_FILE).is_file() {
+        std::fs::remove_file(POST_LIST_FILE).expect("should be able to remove post list file");
     }
 }
 
@@ -31,7 +31,7 @@ fn cleanup_generated_web() {
 fn build_web() -> Result<()> {
     let posts_metadata = collect_posts_metadata(Path::new(POSTS_DIR))?;
 
-    build_posts_template(&posts_metadata)?;
+    build_post_list_template(&posts_metadata)?;
 
     Ok(())
 }
@@ -57,7 +57,7 @@ fn collect_posts_metadata(posts_dir: &Path) -> Result<Vec<PostMetadata>> {
 #[strum(serialize_all = "snake_case")]
 enum Template {
     PostSummary,
-    Posts,
+    PostList,
     Post,
 }
 
@@ -67,7 +67,7 @@ impl From<Template> for PathBuf {
     }
 }
 
-fn build_posts_template(posts_metadata: &[PostMetadata]) -> Result<()> {
+fn build_post_list_template(posts_metadata: &[PostMetadata]) -> Result<()> {
     let summary_elements = posts_metadata
         .iter()
         .map(populate_post_summary_template)
@@ -76,9 +76,9 @@ fn build_posts_template(posts_metadata: &[PostMetadata]) -> Result<()> {
 
     let mapping: TemplateMapping = vec![("items", summary_elements)].into();
 
-    let populated_template = populate_page_template(mapping, Template::Posts)?;
+    let populated_template = populate_page_template(mapping, Template::PostList)?;
 
-    std::fs::write(POSTS_FILE, populated_template)?;
+    std::fs::write(POST_LIST_FILE, populated_template)?;
 
     Ok(())
 }
