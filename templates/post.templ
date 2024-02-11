@@ -5,12 +5,19 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>{{ title }}</title>
+	<title>Patajac Instrukcije - {{ title }}</title>
 </head>
 
 <body>
 	<header>Patajac Instrukcije</header>
-	<main>{{ content }}</main>
+	<a href="../posts.html">Back</a>
+	<main>
+		<div>
+			<p>{{ title }}</p>
+			<span>{{ date }}</span>
+		</div>
+		<div>{{ content }}</div>
+	</main>
 </body>
 
 </html>

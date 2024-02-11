@@ -1,7 +1,7 @@
 use std::path::{Path, PathBuf};
 
 use anyhow::{bail, Result};
-use builder::{post_metadata::PostMetadata, TemplateMapping};
+use builder::{markdown, post_metadata::PostMetadata, Post, TemplateMapping};
 use strum_macros::Display;
 
 const POSTS_DIR: &str = "../posts";
@@ -28,10 +28,13 @@ fn cleanup_generated_web() {
 
 // ----------------------------------------------------------------------------
 
+// TODO?: reorganize into `mod`s
+
 fn build_web() -> Result<()> {
     let posts_metadata = collect_posts_metadata(Path::new(POSTS_DIR))?;
 
     build_post_list_template(&posts_metadata)?;
+    build_post_templates(posts_metadata)?;
 
     Ok(())
 }
@@ -85,13 +88,55 @@ fn build_post_list_template(posts_metadata: &[PostMetadata]) -> Result<()> {
 
 fn populate_post_summary_template(post_metadata: &PostMetadata) -> Result<String> {
     let mapping: TemplateMapping = vec![
-        ("page_path", page_path(&post_metadata.file_name)),
+        ("page_path", page_route(&post_metadata.file_name)),
         ("title", post_metadata.title.clone()),
         ("date", post_metadata.formatted_date()),
     ]
     .into();
 
     populate_page_template(mapping, TemplateType::PostSummary)
+}
+
+fn build_post_templates(posts_metadata: Vec<PostMetadata>) -> Result<()> {
+    posts_metadata
+        .into_iter()
+        .map(construct_post_data)
+        .collect::<Result<Vec<Post>, _>>()?
+        .into_iter()
+        .try_for_each(build_post_page)
+}
+
+fn construct_post_data(post_metadata: PostMetadata) -> Result<Post> {
+    let post_content = std::fs::read_to_string(&post_metadata.path)?;
+
+    let cleaned_post_content = post_content
+        .split_once('\n')
+        .ok_or_else(|| std::io::Error::other("Could not split the first line from the others"))?
+        .1
+        .trim();
+
+    match markdown::to_html(cleaned_post_content) {
+        Err(msg) => bail!(msg),
+        Ok(html) => Ok(Post {
+            metadata: post_metadata,
+            content: html,
+        }),
+    }
+}
+
+fn build_post_page(post: Post) -> Result<()> {
+    let mapping: TemplateMapping = vec![
+        ("title", post.metadata.title.clone()),
+        ("date", post.metadata.formatted_date()),
+        ("content", post.content),
+    ]
+    .into();
+
+    let populated_template = populate_page_template(mapping, TemplateType::Post)?;
+
+    std::fs::write(page_path(&post.metadata.file_name), populated_template)?;
+
+    Ok(())
 }
 
 fn populate_page_template(mapping: TemplateMapping, template_type: TemplateType) -> Result<String> {
@@ -102,6 +147,10 @@ fn populate_page_template(mapping: TemplateMapping, template_type: TemplateType)
     Ok(populated_template)
 }
 
-fn page_path(file_name: &str) -> String {
+fn page_route(file_name: &str) -> String {
     format!("./pages/{file_name}.html")
+}
+
+fn page_path(file_name: &str) -> String {
+    format!("{PAGES_DIR}/{file_name}.html")
 }

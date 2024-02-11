@@ -1,5 +1,11 @@
 pub use template::TemplateMapping;
 
+#[derive(Debug, Clone)]
+pub struct Post {
+    pub metadata: post_metadata::PostMetadata,
+    pub content: String,
+}
+
 pub mod post_metadata {
     use std::{
         fs::{self, File},
@@ -60,7 +66,7 @@ pub mod post_metadata {
     }
 }
 
-mod markdown {
+pub mod markdown {
     pub fn to_html(content: &str) -> Result<String, String> {
         markdown::to_html_with_options(content, &markdown::Options::gfm())
     }
