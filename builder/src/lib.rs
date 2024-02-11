@@ -2,34 +2,47 @@ pub mod post_metadata {
     use std::{
         fs::{self, File},
         io::{self, BufRead, BufReader},
+        path::Path,
     };
 
     use chrono::{DateTime, NaiveDate as Date, Utc};
 
     #[derive(Debug, Clone)]
     pub struct PostMetadata {
+        pub path: String,
         pub file_name: String,
         pub title: String,
         pub date_created: Date,
     }
 
     impl PostMetadata {
-        pub fn collect(file_name: &str) -> io::Result<Self> {
+        pub fn collect(file_path: &str) -> io::Result<Self> {
             Ok(Self {
-                file_name: file_name.to_string(),
-                title: Self::extract_post_title(file_name)?,
-                date_created: Self::determine_date_created(file_name)?,
+                path: file_path.to_string(),
+                file_name: Self::extract_file_name(file_path)?,
+                title: Self::extract_post_title(file_path)?,
+                date_created: Self::determine_date_created(file_path)?,
             })
         }
 
-        fn determine_date_created(file_name: &str) -> io::Result<Date> {
-            fs::metadata(file_name)?
+        fn extract_file_name(file_path: &str) -> io::Result<String> {
+            let file_name = Path::new(file_path)
+                .file_stem()
+                .ok_or_else(|| io::Error::other("Could not extract file name"))?
+                .to_string_lossy()
+                .to_string();
+
+            Ok(file_name)
+        }
+
+        fn determine_date_created(file_path: &str) -> io::Result<Date> {
+            fs::metadata(file_path)?
                 .created()
                 .map(|system_time| Into::<DateTime<Utc>>::into(system_time).date_naive())
         }
 
-        fn extract_post_title(file_name: &str) -> io::Result<String> {
-            let file = File::open(file_name)?;
+        fn extract_post_title(file_path: &str) -> io::Result<String> {
+            let file = File::open(file_path)?;
 
             BufReader::new(file)
                 .lines()
@@ -274,7 +287,8 @@ Paragraph inside test file.
 
         let post_metadata = post_metadata.unwrap();
 
-        assert_eq!(post_metadata.file_name, TEST_FILE_PATH);
+        assert_eq!(post_metadata.path, TEST_FILE_PATH);
+        assert_eq!(post_metadata.file_name, "test_post_metadata_collection");
         assert_eq!(post_metadata.title, "Test post metadata collection");
         assert_eq!(
             post_metadata.date_created,
