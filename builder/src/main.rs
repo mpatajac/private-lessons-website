@@ -1,7 +1,7 @@
 use std::path::{Path, PathBuf};
 
 use anyhow::{bail, Result};
-use builder::{markdown, post_metadata::PostMetadata, Post, TemplateMapping};
+use builder::{markdown, post_metadata::PostMetadata, storage, Post, TemplateMapping};
 use strum_macros::Display;
 
 const POSTS_DIR: &str = "../posts";
@@ -17,13 +17,8 @@ fn main() {
 }
 
 fn cleanup_generated_web() {
-    if Path::new(PAGES_DIR).is_dir() {
-        std::fs::remove_dir_all(PAGES_DIR).expect("should be able to remove pages dir");
-    }
-
-    if Path::new(POST_LIST_FILE).is_file() {
-        std::fs::remove_file(POST_LIST_FILE).expect("should be able to remove post list file");
-    }
+    storage::remove_dir(PAGES_DIR).expect("should be able to remove pages dir");
+    storage::remove_file(POST_LIST_FILE).expect("should be able to remove post list file");
 }
 
 // ----------------------------------------------------------------------------

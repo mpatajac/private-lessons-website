@@ -6,6 +6,28 @@ pub struct Post {
     pub content: String,
 }
 
+pub mod storage {
+    use std::{fs, io, path::Path};
+
+    /// Safely removes a directory (checks for existance before removing)
+    pub fn remove_dir(path: &str) -> io::Result<()> {
+        if Path::new(path).is_dir() {
+            fs::remove_dir_all(path)?;
+        }
+
+        Ok(())
+    }
+
+    /// Safely removes a file (checks for existance before removing)
+    pub fn remove_file(path: &str) -> io::Result<()> {
+        if Path::new(path).is_file() {
+            fs::remove_file(path)?;
+        }
+
+        Ok(())
+    }
+}
+
 pub mod post_metadata {
     use std::{
         fs::{self, File},
