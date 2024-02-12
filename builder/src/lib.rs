@@ -13,7 +13,7 @@ pub mod post_metadata {
         path::Path,
     };
 
-    use chrono::{DateTime, NaiveDate as Date, Utc};
+    use chrono::{DateTime, Local, NaiveDate as Date};
 
     #[derive(Debug, Clone)]
     pub struct PostMetadata {
@@ -51,7 +51,7 @@ pub mod post_metadata {
         fn determine_date_created(file_path: &str) -> io::Result<Date> {
             fs::metadata(file_path)?
                 .created()
-                .map(|system_time| Into::<DateTime<Utc>>::into(system_time).date_naive())
+                .map(|system_time| Into::<DateTime<Local>>::into(system_time).date_naive())
         }
 
         fn extract_post_title(file_path: &str) -> io::Result<String> {
