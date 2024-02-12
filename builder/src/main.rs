@@ -1,7 +1,7 @@
 use std::path::{Path, PathBuf};
 
 use anyhow::{bail, Result};
-use builder::{markdown, post_metadata::PostMetadata, Post, TemplateMapping};
+use builder::{html, post_metadata::PostMetadata, Post, TemplateMapping};
 use strum_macros::Display;
 
 const POSTS_DIR: &str = "../posts";
@@ -115,7 +115,7 @@ fn construct_post_data(post_metadata: PostMetadata) -> Result<Post> {
         .1
         .trim();
 
-    match markdown::to_html(cleaned_post_content) {
+    match html::from_markdown(cleaned_post_content) {
         Err(msg) => bail!(msg),
         Ok(html) => Ok(Post {
             metadata: post_metadata,

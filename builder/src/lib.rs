@@ -66,8 +66,8 @@ pub mod post_metadata {
     }
 }
 
-pub mod markdown {
-    pub fn to_html(content: &str) -> Result<String, String> {
+pub mod html {
+    pub fn from_markdown(content: &str) -> Result<String, String> {
         markdown::to_html_with_options(content, &markdown::Options::gfm())
     }
 }
@@ -176,7 +176,7 @@ mod tests {
 
         let expected_html = "<h1>Test post</h1>\n<p>This is a <strong>test post</strong> in which I test the capabilities of the <a href=\"https://crates.io/crates/markdown/1.0.0-alpha.16\">markdown conversion lib</a>.</p>";
 
-        let received_html = markdown::to_html(md);
+        let received_html = html::from_markdown(md);
 
         assert!(received_html.is_ok());
         assert_eq!(received_html.unwrap(), expected_html);
