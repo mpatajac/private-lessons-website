@@ -1,5 +1,51 @@
 pub use template::TemplateMapping;
 
+pub mod consts {
+    pub const POSTS_DIR: &str = "../posts";
+    pub const PAGES_DIR: &str = "../pages";
+    pub const TEMPL_DIR: &str = "../templates";
+    pub const POST_LIST_FILE: &str = "../posts.html";
+}
+
+#[derive(Debug, strum_macros::Display)]
+#[strum(serialize_all = "snake_case")]
+pub enum TemplateType {
+    PostSummary,
+    PostList,
+    Post,
+}
+
+impl From<TemplateType> for std::path::PathBuf {
+    fn from(template_type: TemplateType) -> Self {
+        let templ_dir = consts::TEMPL_DIR;
+
+        Self::from(format!("{templ_dir}/{template_type}.templ"))
+    }
+}
+
+pub fn populate_page_template(
+    mapping: TemplateMapping,
+    template_type: TemplateType,
+) -> anyhow::Result<String> {
+    let template_path: std::path::PathBuf = template_type.into();
+    let template = std::fs::read_to_string(template_path)?;
+    let populated_template = mapping.populate(template)?;
+
+    Ok(populated_template)
+}
+
+#[must_use]
+pub fn page_route(file_name: &str) -> String {
+    format!("./pages/{file_name}.html")
+}
+
+#[must_use]
+pub fn page_path(file_name: &str) -> String {
+    let pages_dir = consts::PAGES_DIR;
+
+    format!("{pages_dir}/{file_name}.html")
+}
+
 #[derive(Debug, Clone)]
 pub struct Post {
     pub metadata: post_metadata::PostMetadata,
@@ -142,6 +188,7 @@ mod template {
     }
 
     impl TemplateMapping {
+        #[allow(clippy::needless_pass_by_value)]
         fn apply_mapping(
             template_state: String,
             (placeholder, replacement): TemplateItemMapping,
