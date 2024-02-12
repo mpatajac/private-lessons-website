@@ -1,7 +1,7 @@
 use std::path::{Path, PathBuf};
 
 use anyhow::{bail, Result};
-use builder::{html, post_metadata::PostMetadata, Post, TemplateMapping};
+use builder::{html, post_metadata::PostMetadata, storage, Post, TemplateMapping};
 use strum_macros::Display;
 
 const POSTS_DIR: &str = "../posts";
@@ -81,7 +81,7 @@ fn build_post_list_template(posts_metadata: &[PostMetadata]) -> Result<()> {
 
     let populated_template = populate_page_template(mapping, TemplateType::PostList)?;
 
-    std::fs::write(POST_LIST_FILE, populated_template)?;
+    storage::save_page(POST_LIST_FILE, &populated_template)?;
 
     Ok(())
 }
@@ -134,7 +134,7 @@ fn build_post_page(post: Post) -> Result<()> {
 
     let populated_template = populate_page_template(mapping, TemplateType::Post)?;
 
-    std::fs::write(page_path(&post.metadata.file_name), populated_template)?;
+    storage::save_page(&page_path(&post.metadata.file_name), &populated_template)?;
 
     Ok(())
 }

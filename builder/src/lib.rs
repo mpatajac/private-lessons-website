@@ -6,6 +6,18 @@ pub struct Post {
     pub content: String,
 }
 
+pub mod storage {
+    use std::{fs, io};
+
+    pub fn save_page(path: &str, content: &str) -> io::Result<()> {
+        // minify before storing in file
+        let minified_content = super::html::minify(content)
+            .map_err(|err| io::Error::other(format!("Could not minify content: {err}")))?;
+
+        fs::write(path, minified_content)
+    }
+}
+
 pub mod post_metadata {
     use std::{
         fs::{self, File},
