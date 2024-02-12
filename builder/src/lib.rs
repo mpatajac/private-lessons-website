@@ -70,6 +70,13 @@ pub mod html {
     pub fn from_markdown(content: &str) -> Result<String, String> {
         markdown::to_html_with_options(content, &markdown::Options::gfm())
     }
+
+    pub fn minify(content: &str) -> Result<String, std::string::FromUtf8Error> {
+        let minified_content =
+            minify_html::minify(content.as_bytes(), &minify_html::Cfg::spec_compliant());
+
+        String::from_utf8(minified_content)
+    }
 }
 
 mod template {
@@ -170,6 +177,8 @@ mod tests {
 
     use super::*;
 
+    // region: html
+
     #[test]
     fn test_md_to_html() {
         let md = "# Test post\n\nThis is a **test post** in which I test the capabilities of the [markdown conversion lib](https://crates.io/crates/markdown/1.0.0-alpha.16).";
@@ -181,6 +190,38 @@ mod tests {
         assert!(received_html.is_ok());
         assert_eq!(received_html.unwrap(), expected_html);
     }
+
+    #[test]
+    fn test_html_minify() {
+        let raw_html = r#"
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../styles/reset.css">
+	<link rel="stylesheet" href="../styles/style.css">
+	<title>Post 1</title>
+</head>
+
+<body>
+	<a href="../posts.html">Posts</a>
+	Post 1
+</body>
+
+</html>
+		"#
+        .trim();
+
+        let minified = html::minify(raw_html);
+
+        assert!(minified.is_ok());
+        dbg!((minified.unwrap()).len(), raw_html.len());
+        // assert!(minified.unwrap().len() < raw_html.len());
+    }
+
+    // endregion
 
     // region: template
 
