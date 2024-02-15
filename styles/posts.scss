@@ -1,1 +1,64 @@
 @use 'base';
+
+.navbar {
+	.navbar-brand {
+		a:hover {
+			color: base.$primary;
+		}
+	}
+
+	.navbar-start,
+	.navbar-end {
+		.navbar-item {
+			color: base.$primary;
+			letter-spacing: .25em;
+		}
+	}
+}
+
+hr {
+	background-color: base.$primary;
+}
+
+.post-info {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+// title underline
+h1.title {
+	color: base.$black;
+}
+
+// date subtitle
+span.subtitle {
+	color: base.$bland-black
+}
+
+
+h3.subtitle {
+	width: fit-content;
+}
+
+
+// smaller screens
+@media (max-width: 768px) {
+
+	// move post date beneath title
+	.post-info {
+		flex-direction: column;
+		align-items: start;
+	}
+
+	// increase (reduce negative) margin between title and date
+	.subtitle {
+		margin-top: -0.25rem !important;
+	}
+
+	// fill full screen width (even is there is not enough content)
+	main.container.column.is-full {
+		flex: none;
+		width: 100%;
+	}
+}
