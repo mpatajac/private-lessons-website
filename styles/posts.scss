@@ -16,10 +16,6 @@
 	}
 }
 
-hr {
-	background-color: base.$primary;
-}
-
 .post-info {
 	display: flex;
 	justify-content: space-between;
@@ -41,6 +37,23 @@ h3.subtitle {
 	width: fit-content;
 }
 
+.post-summary {
+	@extend .post-info;
+
+	margin-bottom: 1.5rem;
+	border-bottom: 2px solid base.$white;
+	transition: border-bottom-color 200ms 50ms;
+
+	&:hover {
+		border-bottom-color: base.$primary;
+	}
+
+	h1.title {
+		font-weight: normal;
+		font-size: 1.5rem;
+		margin-bottom: .5rem;
+	}
+}
 
 // smaller screens
 @media (max-width: 768px) {
@@ -60,5 +73,12 @@ h3.subtitle {
 	main.container.column.is-full {
 		flex: none;
 		width: 100%;
+	}
+
+	// reduce date size in summaries
+	.post-summary {
+		.subtitle {
+			font-size: .75rem;
+		}
 	}
 }

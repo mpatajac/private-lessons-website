@@ -112,11 +112,7 @@ footer.footer * {
   letter-spacing: 0.25em;
 }
 
-hr {
-  background-color: #FFD900 !important;
-}
-
-.post-info {
+.post-info, .post-summary {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -135,8 +131,22 @@ h3.subtitle {
   width: fit-content;
 }
 
+.post-summary {
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #FAFAFA;
+  transition: border-bottom-color 200ms 50ms;
+}
+.post-summary:hover {
+  border-bottom-color: #FFD900 !important;
+}
+.post-summary h1.title {
+  font-weight: normal;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
 @media (max-width: 768px) {
-  .post-info {
+  .post-info, .post-summary {
     flex-direction: column;
     align-items: start;
   }
@@ -146,5 +156,8 @@ h3.subtitle {
   main.container.column.is-full {
     flex: none;
     width: 100%;
+  }
+  .post-summary .subtitle {
+    font-size: 0.75rem;
   }
 }/*# sourceMappingURL=posts.css.map */
