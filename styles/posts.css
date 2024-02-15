@@ -62,6 +62,9 @@ footer.footer * {
 .social-link span.social-label {
   margin-left: 0.5rem;
 }
+.social-link span.social-label:hover {
+  color: #FFD900 !important;
+}
 
 .highlight-underline {
   position: relative;

@@ -98,6 +98,10 @@ footer.footer {
 
 	span.social-label {
 		margin-left: .5rem;
+
+		&:hover {
+			color: $primary;
+		}
 	}
 }
 
