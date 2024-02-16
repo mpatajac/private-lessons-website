@@ -1,23 +1,69 @@
-<!-- TODO: implement template -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- bulma -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+	<!-- custom style -->
+	<link rel="stylesheet" href="../styles/posts.css">
 	<title>Patajac Instrukcije - {{ title }}</title>
 </head>
 
-<body>
-	<header>Patajac Instrukcije</header>
-	<a href="../posts.html">Back</a>
-	<main>
-		<div>
-			<p>{{ title }}</p>
-			<span>{{ date }}</span>
+<body class="has-navbar-fixed-top">
+	<header>
+		<nav class="navbar has-shadow is-spaced is-fixed-top" role="navigation" aria-label="main navigation">
+			<div class="navbar-menu mr-6">
+				<div class="navbar-end">
+					<span class="navbar-item mx-6 has-text-weight-medium is-size-4">Patajac</span>
+				</div>
+			</div>
+			<div class="navbar-brand mx-6">
+				<!-- TODO: add logo -->
+				<a href="../index.html" class="has-text-weight-semibold is-family-monospace is-size-2">P I</a>
+			</div>
+			<div class="navbar-menu ml-6">
+				<div class="navbar-start">
+					<span class="navbar-item mx-6 has-text-weight-medium is-size-4">Instrukcije</span>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<main class="container column is-full mt-6 p-4 is-fullheight">
+		<div class="post-info">
+			<h1 class="title highlight-underline">{{ title }}</h1>
+			<span class="subtitle is-6">{{ date }}</span>
 		</div>
-		<div>{{ content }}</div>
+		<div class="content mt-4">{{ content }}</div>
 	</main>
+	<footer class="footer mt-auto">
+		<div class="container is-max-desktop is-flex is-justify-content-space-between">
+			<h2 class="title is-4">Kontakt</h2>
+			<div class="is-flex is-justify-content-space-between is-flex-direction-column">
+				<h3 class="subtitle highlight-underline">Društvene mreže</h3>
+				<div class="social-listing">
+					<a href="https://instagram.com/patajacinstrukcije" target="_blank" rel="noopener noreferrer"
+						class="social-link">
+						<img src="../assets/icons/ig.svg" class="icon" />
+						<span class="social-label">@patajacinstrukcije</span>
+					</a>
+				</div>
+				<div class="social-listing">
+					<a href="https://www.facebook.com/people/Patajac-Instrukcije/61556733622014/" target="_blank"
+						rel="noopener noreferrer" class="social-link">
+						<img src="../assets/icons/fb.svg" class="icon" />
+						<span class="social-label">Patajac Instrukcije</span>
+					</a>
+				</div>
+			</div>
+			<div>
+				<h3 class="subtitle highlight-underline">Email</h3>
+				<!-- TODO?: replace with (kontakt)@patajacinstrukcije.com -->
+				<span>patajacinstrukcije@gmail.com</span>
+			</div>
+		</div>
+	</footer>
 </body>
 
 </html>
