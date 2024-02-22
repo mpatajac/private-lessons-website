@@ -53,6 +53,10 @@ footer.footer {
 footer.footer * {
   color: #FAFAFA !important;
 }
+footer.footer h3.subtitle {
+  width: -moz-fit-content;
+  width: fit-content;
+}
 
 .social-link {
   display: flex;

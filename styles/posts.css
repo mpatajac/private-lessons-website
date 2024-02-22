@@ -53,6 +53,10 @@ footer.footer {
 footer.footer * {
   color: #FAFAFA !important;
 }
+footer.footer h3.subtitle {
+  width: -moz-fit-content;
+  width: fit-content;
+}
 
 .social-link {
   display: flex;
@@ -127,11 +131,6 @@ h1.title {
 
 span.subtitle {
   color: rgba(61, 66, 67, 0.6);
-}
-
-h3.subtitle {
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
 .post-summary {
