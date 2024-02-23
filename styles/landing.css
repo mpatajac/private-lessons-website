@@ -17,7 +17,7 @@ html {
 }
 
 .has-navbar-fixed-top {
-  padding-top: 6rem !important;
+  padding-top: 5rem !important;
 }
 
 body {
@@ -40,6 +40,15 @@ a:hover {
 }
 .navbar * {
   color: #FFD900;
+}
+.navbar #logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navbar #logo-container #logo {
+  width: 3.5rem;
+  height: 3.5rem;
 }
 
 .navbar.has-shadow {
@@ -90,6 +99,9 @@ footer.footer h3.subtitle {
   .navbar {
     display: flex;
     justify-content: center;
+  }
+  #logo-container {
+    padding: 1rem;
   }
 }
 @media (max-width: 768px) {
