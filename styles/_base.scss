@@ -18,8 +18,9 @@ $main-font: "Poppins", sans-serif;
 $monospace-font: "Ubuntu Mono", monospace;
 
 // vars
-$navbar-vertical-offset: 6rem;
+$navbar-vertical-offset: 5rem;
 $navbar-vertical-offset-mobile: 4rem;
+$logo-size: 3.5rem;
 
 // smooth scrolling
 html {
@@ -71,11 +72,30 @@ a {
 	* {
 		color: $gold;
 	}
+
+	// center logo in wrapping link
+	#logo-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		// set logo size
+		#logo {
+			width: $logo-size;
+			height: $logo-size;
+		}
+	}
 }
 
 
 .navbar.has-shadow {
 	box-shadow: 0 2px 0 0 $gold;
+}
+
+main {
+	strong {
+		color: $black;
+	}
 }
 
 
@@ -85,6 +105,10 @@ footer.footer {
 
 	* {
 		color: $white !important;
+	}
+
+	h3.subtitle {
+		width: fit-content;
 	}
 }
 
@@ -135,6 +159,11 @@ footer.footer {
 	.navbar {
 		display: flex;
 		justify-content: center;
+	}
+
+	// add space above and below logo
+	#logo-container {
+		padding: 1rem;
 	}
 }
 

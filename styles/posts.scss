@@ -32,11 +32,6 @@ span.subtitle {
 	color: base.$bland-black
 }
 
-
-h3.subtitle {
-	width: fit-content;
-}
-
 .post-summary {
 	@extend .post-info;
 

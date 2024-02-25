@@ -17,7 +17,7 @@ html {
 }
 
 .has-navbar-fixed-top {
-  padding-top: 6rem !important;
+  padding-top: 5rem !important;
 }
 
 body {
@@ -41,9 +41,22 @@ a:hover {
 .navbar * {
   color: #FFD900;
 }
+.navbar #logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navbar #logo-container #logo {
+  width: 3.5rem;
+  height: 3.5rem;
+}
 
 .navbar.has-shadow {
   box-shadow: 0 2px 0 0 #FFD900;
+}
+
+main strong {
+  color: #3D4243;
 }
 
 footer.footer {
@@ -52,6 +65,10 @@ footer.footer {
 }
 footer.footer * {
   color: #FAFAFA !important;
+}
+footer.footer h3.subtitle {
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .social-link {
@@ -86,6 +103,9 @@ footer.footer * {
   .navbar {
     display: flex;
     justify-content: center;
+  }
+  #logo-container {
+    padding: 1rem;
   }
 }
 @media (max-width: 768px) {
@@ -127,11 +147,6 @@ h1.title {
 
 span.subtitle {
   color: rgba(61, 66, 67, 0.6);
-}
-
-h3.subtitle {
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
 .post-summary {
