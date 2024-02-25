@@ -92,6 +92,12 @@ a {
 	box-shadow: 0 2px 0 0 $gold;
 }
 
+main {
+	strong {
+		color: $black;
+	}
+}
+
 
 footer.footer {
 	background-color: $black !important;

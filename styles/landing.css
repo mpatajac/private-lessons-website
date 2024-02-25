@@ -55,6 +55,10 @@ a:hover {
   box-shadow: 0 2px 0 0 #FFD900;
 }
 
+main strong {
+  color: #3D4243;
+}
+
 footer.footer {
   background-color: #3D4243 !important;
   padding-bottom: 2rem;
