@@ -1,1 +1,8 @@
 @use 'base';
+
+.navbar {
+	* {
+		// TODO: keep primary everywhere?
+		color: base.$white;
+	}
+}

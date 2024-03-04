@@ -69,10 +69,6 @@ a {
 .navbar {
 	background-color: $black;
 
-	* {
-		color: $gold;
-	}
-
 	// center logo in wrapping link
 	#logo-container {
 		display: flex;
@@ -89,7 +85,7 @@ a {
 
 
 .navbar.has-shadow {
-	box-shadow: 0 2px 0 0 $gold;
+	box-shadow: 0 2px 0 0 $primary;
 }
 
 main {

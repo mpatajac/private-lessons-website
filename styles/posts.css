@@ -38,9 +38,6 @@ a:hover {
 .navbar {
   background-color: #3D4243;
 }
-.navbar * {
-  color: #FFD900;
-}
 .navbar #logo-container {
   display: flex;
   justify-content: center;
@@ -52,7 +49,7 @@ a:hover {
 }
 
 .navbar.has-shadow {
-  box-shadow: 0 2px 0 0 #FFD900;
+  box-shadow: 0 2px 0 0 #FFD900 !important;
 }
 
 main strong {
@@ -125,6 +122,9 @@ footer.footer h3.subtitle {
   footer.footer .social-link {
     margin-bottom: 0;
   }
+}
+.navbar * {
+  color: #FFD900 !important;
 }
 .navbar .navbar-brand a:hover {
   color: #FFD900 !important;
