@@ -17,3 +17,9 @@ function handleNavbarUnderline() {
 		navbar.classList.remove("has-shadow");
 	}
 }
+
+
+// Apply (smooth) scrolling back to the top of the page
+function scrollToTop() {
+	document.documentElement.scrollTop = 0;
+}
