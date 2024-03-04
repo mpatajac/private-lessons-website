@@ -123,6 +123,13 @@ footer.footer h3.subtitle {
     margin-bottom: 0;
   }
 }
+.navbar {
+  transition: box-shadow 250ms;
+}
 .navbar * {
   color: #FAFAFA;
+}
+
+.hero {
+  background-color: #3D4243;
 }/*# sourceMappingURL=landing.css.map */

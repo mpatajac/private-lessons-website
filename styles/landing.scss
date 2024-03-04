@@ -1,8 +1,14 @@
 @use 'base';
 
 .navbar {
+	transition: box-shadow 250ms;
+
 	* {
 		// TODO: keep primary everywhere?
 		color: base.$white;
 	}
+}
+
+.hero {
+	background-color: base.$black;
 }
