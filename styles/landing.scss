@@ -43,10 +43,63 @@
 
 main {}
 
+#offers {
+
+	.offer-card-list {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-evenly;
+
+		background-color: base.$primary;
+		padding: 1rem;
+
+		.offer-card {
+			background-color: base.$black;
+			padding: 0 1rem;
+			border-radius: 1rem;
+
+			* {
+				color: base.$white;
+			}
+
+			.card-header {
+				flex-direction: column;
+				align-items: center;
+
+				.icon {
+					margin-top: .5rem;
+				}
+			}
+
+			.card-content {
+
+				ul {
+					list-style-type: disc;
+				}
+
+				li {
+					font-weight: 500;
+
+					&::marker {
+						color: base.$primary;
+					}
+				}
+			}
+		}
+	}
+}
+
 
 
 @media (max-width: 1024px) {
 	.hero-img {
 		display: none;
+	}
+}
+
+@media (max-width: 768px) {
+	.offer-card-list {
+		flex-direction: column;
 	}
 }
