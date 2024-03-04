@@ -9,6 +9,44 @@
 	}
 }
 
+
 .hero {
 	background-color: base.$black;
+
+	.hero-body {
+		display: flex;
+
+		* {
+			color: base.$white;
+		}
+
+		.is-primary {
+			color: base.$primary;
+		}
+
+		.hero-content {
+			width: 75%;
+		}
+
+		.hero-img {
+			border: 1px solid base.$primary;
+			width: 100%;
+
+			// TODO: test, remove
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+}
+
+
+main {}
+
+
+
+@media (max-width: 1024px) {
+	.hero-img {
+		display: none;
+	}
 }

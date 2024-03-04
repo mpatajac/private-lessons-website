@@ -132,4 +132,29 @@ footer.footer h3.subtitle {
 
 .hero {
   background-color: #3D4243;
+}
+.hero .hero-body {
+  display: flex;
+}
+.hero .hero-body * {
+  color: #FAFAFA;
+}
+.hero .hero-body .is-primary {
+  color: #FFD900 !important;
+}
+.hero .hero-body .hero-content {
+  width: 75%;
+}
+.hero .hero-body .hero-img {
+  border: 1px solid #FFD900 !important;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .hero-img {
+    display: none;
+  }
 }/*# sourceMappingURL=landing.css.map */
