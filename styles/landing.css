@@ -192,12 +192,18 @@ footer.footer h3.subtitle {
 
 @media (max-width: 1024px) {
   .hero-img {
-    display: none;
+    display: none !important;
   }
 }
 @media (max-width: 768px) {
-  .offer-card-list {
+  #offers .offer-card-list {
     flex-direction: column;
+  }
+  #offers .offer-card-list .offer-card {
+    width: 300px;
+  }
+  #offers .offer-card-list .offer-card:not(:last-child) {
+    margin-bottom: 1rem;
   }
 }
 @media screen and (prefers-reduced-motion: reduce) {
