@@ -186,6 +186,10 @@ footer.footer h3.subtitle {
   color: #FFD900 !important;
 }
 
+.buffer {
+  height: 100vh;
+}
+
 @media (max-width: 1024px) {
   .hero-img {
     display: none;
@@ -194,5 +198,57 @@ footer.footer h3.subtitle {
 @media (max-width: 768px) {
   .offer-card-list {
     flex-direction: column;
+  }
+}
+@media screen and (prefers-reduced-motion: reduce) {
+  .animated {
+    animation: none !important;
+  }
+}
+.aos,
+.aos-collection > * {
+  opacity: 0;
+}
+
+.animated {
+  animation-delay: 250ms;
+  animation-duration: 500ms;
+  animation-name: animate;
+  animation-fill-mode: backwards;
+  opacity: 1;
+}
+
+.animated-stagger-0 {
+  animation-delay: 0ms;
+}
+
+.animated-stagger-1 {
+  animation-delay: 250ms;
+}
+
+.animated-stagger-2 {
+  animation-delay: 500ms;
+}
+
+.animated-stagger-3 {
+  animation-delay: 750ms;
+}
+
+.animated-stagger-4 {
+  animation-delay: 1000ms;
+}
+
+.animated-stagger-5 {
+  animation-delay: 1250ms;
+}
+
+@keyframes animate {
+  0% {
+    opacity: 0;
+    transform: translate(0, 20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
   }
 }/*# sourceMappingURL=landing.css.map */

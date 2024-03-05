@@ -13,7 +13,7 @@
 	<title>Patajac Instrukcije</title>
 </head>
 
-<body class="has-navbar-fixed-top">
+<body class="has-navbar-fixed-top" onload="setup()">
 	<header>
 		<nav class="navbar is-spaced is-fixed-top" role="navigation" aria-label="main navigation">
 			<!-- TODO: replace menus with section bookmarks -->
@@ -23,7 +23,7 @@
 					<span class="navbar-item mx-6 has-text-weight-medium is-size-4">Patajac</span>
 				</div>
 			</div>
-			<div class="navbar-brand mx-6">
+			<div class="navbar-brand mx-6 aos">
 				<a id="logo-container" onclick="scrollToTop()">
 					<img src="../assets/icons/logo.svg" id="logo" class="icon" />
 				</a>
@@ -41,7 +41,7 @@
 		</nav>
 	</header>
 	<section class="hero is-large">
-		<div class="hero-body">
+		<div class="hero-body aos-collection">
 			<div class="hero-content">
 				<h1 class="title is-primary is-1 is-spaced">Patajac Instrukcije</h1>
 				<p class="subtitle is-3">
@@ -57,9 +57,11 @@
 		</div>
 	</section>
 	<main>
+		<div class="buffer"></div>
+		<div class="buffer"></div>
 		<section id="offers">
 
-			<div class="offer-card-list">
+			<div class="offer-card-list aos-collection">
 				<div class="card offer-card">
 					<div class="card-header">
 						<!-- <img src="../assets/icons/ig.svg" class="" /> -->
@@ -102,14 +104,12 @@
 			</div>
 		</section>
 		<section id="organization">
-
 		</section>
 		<section id="about">
-
 		</section>
 	</main>
-	<footer id="contact" class="footer mt-auto">
-		<div class="container is-max-desktop is-flex is-justify-content-space-between">
+	<footer class="footer mt-auto">
+		<div id="contact" class="container is-max-desktop is-flex is-justify-content-space-between aos-collection">
 			<h2 class="title is-4">Kontakt</h2>
 			<div class="is-flex is-justify-content-space-between is-flex-direction-column">
 				<h3 class="subtitle highlight-underline">Društvene mreže</h3>

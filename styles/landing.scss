@@ -91,6 +91,12 @@ main {}
 }
 
 
+// TODO: remove
+.buffer {
+	height: 100vh;
+}
+
+// Media queries
 
 @media (max-width: 1024px) {
 	.hero-img {
@@ -101,5 +107,67 @@ main {}
 @media (max-width: 768px) {
 	.offer-card-list {
 		flex-direction: column;
+	}
+}
+
+
+// Animations
+
+@media screen and (prefers-reduced-motion: reduce) {
+	.animated {
+		animation: none !important;
+	}
+}
+
+.aos,
+.aos-collection>* {
+	opacity: 0;
+}
+
+.animated {
+	animation-delay: 250ms;
+	animation-duration: 500ms;
+	animation-name: animate;
+	animation-fill-mode: backwards;
+	opacity: 1;
+}
+
+@mixin animation-stagger-delay($elemCount) {
+	animation-delay: 250ms * $elemCount;
+}
+
+.animated-stagger-0 {
+	@include animation-stagger-delay(0);
+}
+
+.animated-stagger-1 {
+	@include animation-stagger-delay(1);
+}
+
+.animated-stagger-2 {
+	@include animation-stagger-delay(2);
+}
+
+.animated-stagger-3 {
+	@include animation-stagger-delay(3);
+}
+
+.animated-stagger-4 {
+	@include animation-stagger-delay(4);
+}
+
+.animated-stagger-5 {
+	@include animation-stagger-delay(5);
+}
+
+@keyframes animate {
+	0% {
+		opacity: 0;
+		transform: translate(0, 20px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translate(0, 0);
 	}
 }
