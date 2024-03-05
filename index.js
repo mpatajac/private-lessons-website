@@ -38,17 +38,15 @@ function scrollToTop() {
 
 // --------------------------------------------------
 
-// Used to delay element display (wait until it has scrolled enough)
-const checkDelta = 200;
-
 // Checks if element satisfies all criteria (namely, vertical position) in order to be displayed
 function isElemVisible(elem) {
-	// `elem.getBoundingClientRect().top` gets elements distance from the top of the viewport
-	// so we need to check if the top has reached viewport bottom (- delta)
-	const viewportBottom = window.screen.availHeight - checkDelta;
-	const elementTop = elem.getBoundingClientRect().top;
+	// `elem.getBoundingClientRect().bottom` gets element's bottom's distance from the top of the viewport
+	// so we need to check if the bottom has (roughly) reached viewport bottom (i.e. completely in viewport)
+	// TODO?: re-check this after all the content is done to see if it behaves nicely
+	const viewportBottom = window.screen.availHeight;
+	const elementBottom = elem.getBoundingClientRect().bottom;
 
-	return viewportBottom > elementTop;
+	return viewportBottom > elementBottom;
 };
 
 
