@@ -1,14 +1,18 @@
 function setup() {
-	// TODO?: collect all `aos` elements here, pass them to `applyAOS` to prevent re-fetching on every scroll?
+	// "animate-on-scroll" elements - pre-fetched to avoid refetching on every scroll event
+	const aosSingleElems = document.getElementsByClassName("aos");
+	const aosCollectionElems = document.getElementsByClassName("aos-collection");
+
 	window.onscroll = () => {
 		handleNavbarUnderline();
-		applyAOS();
+		applyAOS(aosSingleElems, aosCollectionElems);
 	}
 
 	// check on page load if any elements need to be shown
-	applyAOS();
+	applyAOS(aosSingleElems, aosCollectionElems);
 }
 
+// --------------------------------------------------
 
 
 // Add or remove navbar shadow depending on whether page is scrolled or not
@@ -32,31 +36,33 @@ function scrollToTop() {
 }
 
 
+// --------------------------------------------------
+
+// Used to delay element display (wait until it has scrolled enough)
+const checkDelta = 200;
+
+// Checks if element satisfies all criteria (namely, vertical position) in order to be displayed
+function isElemVisible(elem) {
+	// `elem.getBoundingClientRect().top` gets elements distance from the top of the viewport
+	// so we need to check if the top has reached viewport bottom (- delta)
+	const viewportBottom = window.screen.availHeight - checkDelta;
+	const elementTop = elem.getBoundingClientRect().top;
+
+	return viewportBottom > elementTop;
+};
+
+
 // Apply logic so specified elements can perform animation when they are scrolled to
-function applyAOS() {
-	// used to delay element display (wait until it has scrolled enough)
-	// const checkDelta = window.screen.availHeight / 4;
-	const checkDelta = 200;
-	const isElemVisible = (elem) => {
-		// `elem.getBoundingClientRect().top` gets elements distance from the top of the viewport
-		// so we need to check if the top has reached viewport bottom (- delta)
-		const viewportBottom = window.screen.availHeight - checkDelta;
-		const elementTop = elem.getBoundingClientRect().top;
-
-		return viewportBottom > elementTop;
-	};
-
+function applyAOS(singleElems, elemCollections) {
 	// singular elements
-	const aosElems = document.getElementsByClassName("aos");
-	for (const elem of aosElems) {
+	for (const elem of singleElems) {
 		if (isElemVisible(elem)) {
 			elem.classList.add("animated");
 		}
 	}
 
 	// element collections
-	const aosCollectionElems = document.getElementsByClassName("aos-collection");
-	for (const parentElem of aosCollectionElems) {
+	for (const parentElem of elemCollections) {
 		let childElems = parentElem.children;
 
 		for (let i = 0; i < childElems.length; ++i) {
@@ -69,3 +75,5 @@ function applyAOS() {
 		}
 	}
 }
+
+// --------------------------------------------------
