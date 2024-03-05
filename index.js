@@ -4,6 +4,7 @@ function setup() {
 	const aosCollectionElems = document.getElementsByClassName("aos-collection");
 
 	window.onscroll = () => {
+		// TODO: add check on page load
 		handleNavbarUnderline();
 		applyAOS(aosSingleElems, aosCollectionElems);
 	}
@@ -42,7 +43,10 @@ function scrollToTop() {
 function isElemVisible(elem) {
 	// `elem.getBoundingClientRect().bottom` gets element's bottom's distance from the top of the viewport
 	// so we need to check if the bottom has (roughly) reached viewport bottom (i.e. completely in viewport)
-	// TODO?: re-check this after all the content is done to see if it behaves nicely
+	/*
+		TODO?: re-check this after all the content is done to see if it behaves nicely 
+			(e.g. maybe check `elem.getBoundingClientRect().top` instead of `.bottom` on smaller screens) 
+	*/
 	const viewportBottom = window.screen.availHeight;
 	const elementBottom = elem.getBoundingClientRect().bottom;
 
