@@ -52,7 +52,47 @@ div.dark {
 	}
 }
 
+main {
+	ul {
+		list-style-type: disc;
+		letter-spacing: .02rem;
+	}
+
+	li {
+		font-weight: 500;
+
+		&::marker {
+			color: base.$primary;
+		}
+
+		&:not(:last-child) {
+			margin-bottom: .5rem;
+		}
+	}
+}
+
 #offers {
+	#offers-tech {
+		display: flex;
+		justify-content: space-between;
+		align-items: stretch;
+		padding-bottom: 0;
+
+		#offers-tech-desc {
+			ul {
+				margin-top: 1rem;
+				padding-left: 1em;
+			}
+		}
+
+		#offers-tech-list {
+			padding: 1rem;
+
+			p {
+				padding-left: 2rem;
+			}
+		}
+	}
 
 	.offer-card-list {
 		display: flex;
@@ -60,13 +100,14 @@ div.dark {
 		align-items: stretch;
 		justify-content: space-evenly;
 
-		background-color: base.$primary;
-		padding: 1rem;
+		border-radius: 1rem 0 0 1rem;
 
 		.offer-card {
 			background-color: base.$black;
 			padding: 0 1rem;
+			margin: 0 1rem;
 			border-radius: 1rem;
+			border: 2px solid base.$primary;
 
 			* {
 				color: base.$white;
@@ -79,21 +120,6 @@ div.dark {
 
 				.icon {
 					margin-top: .5rem;
-				}
-			}
-
-			.card-content {
-
-				ul {
-					list-style-type: disc;
-				}
-
-				li {
-					font-weight: 500;
-
-					&::marker {
-						color: base.$primary;
-					}
 				}
 			}
 		}
@@ -133,18 +159,32 @@ div.dark {
 	.bookmark {
 		padding-top: 0;
 	}
+
+	#offers {
+		.offer-card-list {
+			flex-direction: column;
+			align-items: center;
+
+			.offer-card {
+				width: 300px;
+
+				&:not(:last-child) {
+					margin-bottom: 1rem;
+				}
+			}
+		}
+	}
 }
 
 @media (max-width: 768px) {
-	#offers .offer-card-list {
-		flex-direction: column;
-		align-items: center;
+	#offers {
+		#offers-tech {
+			flex-direction: column;
 
-		.offer-card {
-			width: 300px;
-
-			&:not(:last-child) {
-				margin-bottom: 1rem;
+			#offers-tech-list {
+				p {
+					padding-left: 0;
+				}
 			}
 		}
 	}

@@ -80,10 +80,10 @@ footer.footer h3.subtitle {
   color: #FFD900 !important;
 }
 
-.highlight-underline {
+.highlight-underline, .highlight-underline-shorter {
   position: relative;
 }
-.highlight-underline::after {
+.highlight-underline::after, .highlight-underline-shorter::after {
   content: "";
   background-color: #FFD900 !important;
   width: 120%;
@@ -91,6 +91,10 @@ footer.footer h3.subtitle {
   position: absolute;
   bottom: -10px;
   left: 0;
+}
+
+.highlight-underline-shorter::after {
+  width: 100%;
 }
 
 @media (max-width: 1024px) {
@@ -164,18 +168,49 @@ div.dark * {
   color: #FAFAFA;
 }
 
+main ul {
+  list-style-type: disc;
+  letter-spacing: 0.02rem;
+}
+main li {
+  font-weight: 500;
+}
+main li::marker {
+  color: #FFD900 !important;
+}
+main li:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+#offers #offers-tech {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  padding-bottom: 0;
+}
+#offers #offers-tech #offers-tech-desc ul {
+  margin-top: 1rem;
+  padding-left: 1em;
+}
+#offers #offers-tech #offers-tech-list {
+  padding: 1rem;
+}
+#offers #offers-tech #offers-tech-list p {
+  padding-left: 2rem;
+}
 #offers .offer-card-list {
   display: flex;
   flex-direction: row;
   align-items: stretch;
   justify-content: space-evenly;
-  background-color: #FFD900 !important;
-  padding: 1rem;
+  border-radius: 1rem 0 0 1rem;
 }
 #offers .offer-card-list .offer-card {
   background-color: #3D4243;
   padding: 0 1rem;
+  margin: 0 1rem;
   border-radius: 1rem;
+  border: 2px solid #FFD900 !important;
 }
 #offers .offer-card-list .offer-card * {
   color: #FAFAFA;
@@ -187,15 +222,6 @@ div.dark * {
 }
 #offers .offer-card-list .offer-card .card-header .icon {
   margin-top: 0.5rem;
-}
-#offers .offer-card-list .offer-card .card-content ul {
-  list-style-type: disc;
-}
-#offers .offer-card-list .offer-card .card-content li {
-  font-weight: 500;
-}
-#offers .offer-card-list .offer-card .card-content li::marker {
-  color: #FFD900 !important;
 }
 
 #free-class {
@@ -223,8 +249,6 @@ div.dark * {
   .bookmark {
     padding-top: 0;
   }
-}
-@media (max-width: 768px) {
   #offers .offer-card-list {
     flex-direction: column;
     align-items: center;
@@ -234,6 +258,14 @@ div.dark * {
   }
   #offers .offer-card-list .offer-card:not(:last-child) {
     margin-bottom: 1rem;
+  }
+}
+@media (max-width: 768px) {
+  #offers #offers-tech {
+    flex-direction: column;
+  }
+  #offers #offers-tech #offers-tech-list p {
+    padding-left: 0;
   }
   #free-class {
     flex-direction: column;

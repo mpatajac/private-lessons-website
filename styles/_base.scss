@@ -141,6 +141,14 @@ footer.footer {
 	}
 }
 
+.highlight-underline-shorter {
+	@extend .highlight-underline;
+
+	&::after {
+		width: 100%;
+	}
+}
+
 
 
 // smaller screens

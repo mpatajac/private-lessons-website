@@ -80,10 +80,10 @@ footer.footer h3.subtitle {
   color: #FFD900 !important;
 }
 
-.highlight-underline {
+.highlight-underline, .highlight-underline-shorter {
   position: relative;
 }
-.highlight-underline::after {
+.highlight-underline::after, .highlight-underline-shorter::after {
   content: "";
   background-color: #FFD900 !important;
   width: 120%;
@@ -91,6 +91,10 @@ footer.footer h3.subtitle {
   position: absolute;
   bottom: -10px;
   left: 0;
+}
+
+.highlight-underline-shorter::after {
+  width: 100%;
 }
 
 @media (max-width: 1024px) {
