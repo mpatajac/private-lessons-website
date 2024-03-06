@@ -157,10 +157,10 @@ html {
   align-items: center;
 }
 
-section.dark {
+div.dark {
   background-color: #3D4243;
 }
-section.dark * {
+div.dark * {
   color: #FAFAFA;
 }
 
@@ -198,6 +198,20 @@ section.dark * {
   color: #FFD900 !important;
 }
 
+#free-class {
+  display: flex;
+  align-items: stretch;
+}
+#free-class #free-class-questions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+#free-class > p {
+  text-align: right;
+  margin-left: 1rem;
+}
+
 .buffer {
   height: 100vh;
 }
@@ -220,6 +234,14 @@ section.dark * {
   }
   #offers .offer-card-list .offer-card:not(:last-child) {
     margin-bottom: 1rem;
+  }
+  #free-class {
+    flex-direction: column;
+  }
+  #free-class p {
+    margin-left: initial;
+    margin-top: 1rem;
+    text-align: left;
   }
 }
 @media screen and (prefers-reduced-motion: reduce) {

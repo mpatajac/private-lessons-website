@@ -44,7 +44,7 @@ html {
 	}
 }
 
-section.dark {
+div.dark {
 	background-color: base.$black;
 
 	* {
@@ -101,6 +101,22 @@ section.dark {
 }
 
 
+#free-class {
+	display: flex;
+	align-items: stretch;
+
+	#free-class-questions {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+	}
+
+	&>p {
+		text-align: right;
+		margin-left: 1rem;
+	}
+}
+
 // TODO: remove
 .buffer {
 	height: 100vh;
@@ -130,6 +146,16 @@ section.dark {
 			&:not(:last-child) {
 				margin-bottom: 1rem;
 			}
+		}
+	}
+
+	#free-class {
+		flex-direction: column;
+
+		p {
+			margin-left: initial;
+			margin-top: 1rem;
+			text-align: left;
 		}
 	}
 }
