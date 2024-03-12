@@ -19,6 +19,7 @@ html {
 
 	.hero-body {
 		display: flex;
+		padding-top: 12rem !important;
 
 		* {
 			color: base.$white;
@@ -33,13 +34,25 @@ html {
 		}
 
 		.hero-img {
-			border: 1px solid base.$primary;
 			width: 100%;
+			position: relative;
 
-			// TODO: test, remove
-			display: flex;
-			justify-content: center;
-			align-items: center;
+			svg {
+				position: absolute;
+				// TODO?: adjust on not-so-big screens
+				width: 25px;
+				height: 30px;
+				top: 15%;
+				left: 40%;
+
+				g {
+					transform: translateY(-100%);
+				}
+			}
+
+			img {
+				height: 100%;
+			}
 		}
 	}
 }
@@ -177,6 +190,10 @@ main {
 }
 
 @media (max-width: 768px) {
+	.hero .hero-body {
+		padding-top: 3rem !important;
+	}
+
 	#offers {
 		#offers-tech {
 			flex-direction: column;
@@ -196,6 +213,23 @@ main {
 			margin-left: initial;
 			margin-top: 1rem;
 			text-align: left;
+		}
+	}
+}
+
+@media (max-width: 1365px) {
+	.hero .hero-body .hero-img {
+		svg {
+			display: none;
+			animation: none;
+		}
+	}
+}
+
+@media (min-width: 1920px) {
+	.hero .hero-body .hero-img {
+		svg {
+			left: 388px;
 		}
 	}
 }
@@ -261,4 +295,54 @@ main {
 		opacity: 1;
 		transform: translate(0, 0);
 	}
+}
+
+// Hero img steam animation
+
+.steam {
+	opacity: 1;
+	animation: steam-animation 10s linear 0s infinite;
+	animation-fill-mode: backwards;
+}
+
+$steam-animation-offset: 50%;
+
+@keyframes steam-animation {
+	0% {
+		opacity: 0;
+		transform: translateY($steam-animation-offset);
+	}
+
+	25% {
+		opacity: .2;
+	}
+
+	50% {
+		opacity: .8;
+		transform: translateY(0);
+	}
+
+	75% {
+		opacity: .2;
+	}
+
+	100% {
+		opacity: 0;
+		transform: translateY(-$steam-animation-offset);
+	}
+}
+
+
+.steam-1 {
+	animation-duration: 10s;
+}
+
+.steam-2 {
+	animation-duration: 7s;
+	animation-delay: 2500ms;
+}
+
+.steam-3 {
+	animation-duration: 5s;
+	animation-delay: 1500ms;
 }
