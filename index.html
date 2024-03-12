@@ -4,13 +4,22 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="title" content="Patajac Instrukcije - instrukcije i tečajevi iz programiranja">
+	<meta name="description"
+		content="Instrukcije i tečajevi iz programiranja u Osijeku za sve uzraste i razine znanja. Prvi sat besplatan!">
+	<meta name="keywords"
+		content="instrukcije, programiranje, osijek, patajac, tečaj, instrukcije iz programiranja, instrukcije iz programiranja osijek">
+	<meta name="robots" content="index, follow">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="language" content="Croatian">
+	<meta name="author" content="Matija Patajac">
 	<link rel="icon" href="../assets/icons/logo.svg" sizes="any" type="image/svg+xml">
 	<!-- bulma -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 	<!-- custom style -->
 	<link rel="stylesheet" href="./styles/landing.css">
 	<script src="./index.js"></script>
-	<title>Patajac Instrukcije</title>
+	<title>Patajac Instrukcije - instrukcije i tečajevi iz programiranja</title>
 </head>
 
 <body class="has-navbar-fixed-top" onload="setup()">
@@ -28,7 +37,7 @@
 			</div>
 			<div class="navbar-brand mx-6 aos">
 				<a id="logo-container" href="#" onclick="scrollToTop()">
-					<img src="../assets/icons/logo.svg" id="logo" class="icon" />
+					<img src="../assets/icons/logo.svg" id="logo" class="icon" alt="company logo" />
 				</a>
 			</div>
 			<div class="navbar-menu ml-6">
@@ -80,7 +89,8 @@
 							stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="3" />
 					</g>
 				</svg>
-				<img src="./assets/hero-img-min.svg" alt="hero image">
+				<img src="./assets/hero-img-min.svg"
+					alt="illustration of a table with a keyboard, monitor, notepad and a coffee cup">
 			</div>
 		</div>
 	</section>
@@ -97,59 +107,59 @@
 				</p>
 			</section>
 			<div class="dark">
-				<div id="offers-tech" class="section container">
-					<div id="offers-tech-desc" class="column is-one-third">
-						<p>Možemo obrađivati neko od raznih područja programiranja,
-							kao što
-							su:</p>
-						<ul class="aos-collection">
-							<li>programiranje opće primjene<br>(osnove programiranja)</li>
-							<li>klijentsko web programiranje</li>
-							<li>poslužiteljsko web programiranje</li>
-							<li>baze podataka</li>
-							<li>strukture podataka i algoritmi</li>
-							<li>funkcijsko programiranje</li>
-						</ul>
-					</div>
-					<div id="offers-tech-list">
-						<p>... ili se fokusirati na konkretan jezik ili tehnologiju:</p>
-						<div class="offer-card-list column aos-collection">
-							<div class="card offer-card">
-								<div class="card-header">
-									<!-- <img src="../assets/icons/ig.svg" class="" /> -->
-									<h3 class="card-header-title">Opće primjene</h3>
+				<div class="section container">
+					<h2 class="title is-4 highlight-underline">Područja i tehnologije</h2>
+					<div id="offers-tech">
+						<div id="offers-tech-desc" class="column is-one-third">
+							<p>Možemo obrađivati neko od raznih područja programiranja,
+								kao što
+								su:</p>
+							<ul class="aos-collection">
+								<li>programiranje opće primjene<br>(osnove programiranja)</li>
+								<li>klijentsko web programiranje</li>
+								<li>poslužiteljsko web programiranje</li>
+								<li>baze podataka</li>
+								<li>strukture podataka i algoritmi</li>
+								<li>funkcijsko programiranje</li>
+							</ul>
+						</div>
+						<div id="offers-tech-list">
+							<p>... ili se fokusirati na konkretan jezik ili tehnologiju:</p>
+							<div class="offer-card-list column aos-collection">
+								<div class="card offer-card">
+									<div class="card-header">
+										<h3 class="card-header-title">Opće primjene</h3>
+									</div>
+									<div class="card-content">
+										<ul>
+											<li>Python</li>
+											<li>C/C++</li>
+											<li>Rust</li>
+										</ul>
+									</div>
 								</div>
-								<div class="card-content">
-									<ul>
-										<li>Python</li>
-										<li>C/C++</li>
-										<li>Rust</li>
-									</ul>
+								<div class="card offer-card">
+									<div class="card-header">
+										<h3 class="card-header-title">Web aplikacije</h3>
+									</div>
+									<div class="card-content">
+										<ul>
+											<li>HTML</li>
+											<li>CSS</li>
+											<li>JavaScript</li>
+										</ul>
+									</div>
 								</div>
-							</div>
-							<div class="card offer-card">
-								<div class="card-header">
-									<!-- <img src="../assets/icons/ig.svg" class="" /> -->
-									<h3 class="card-header-title">Web aplikacije</h3>
-								</div>
-								<div class="card-content">
-									<ul>
-										<li>HTML</li>
-										<li>CSS</li>
-										<li>JavaScript</li>
-									</ul>
-								</div>
-							</div>
-							<div class="card offer-card">
-								<div class="card-header">
-									<!-- <img src="../assets/icons/ig.svg" class="" /> -->
-									<h3 class="card-header-title">Funkcijski pristup</h3>
-								</div>
-								<div class="card-content">
-									<ul>
-										<li>Haskell</li>
-										<li>Elm</li>
-									</ul>
+								<div class="card offer-card">
+									<div class="card-header">
+										<h3 class="card-header-title">Funkcijski pristup</h3>
+									</div>
+									<div class="card-content">
+										<ul>
+											<li>Haskell</li>
+											<li>Elm</li>
+										</ul>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -263,14 +273,14 @@
 				<div class="social-listing">
 					<a href="https://instagram.com/patajacinstrukcije" target="_blank" rel="noopener noreferrer"
 						class="social-link">
-						<img src="../assets/icons/ig.svg" class="icon" />
+						<img src="../assets/icons/ig.svg" class="icon" alt="instagram icon" />
 						<span class="social-label">@patajacinstrukcije</span>
 					</a>
 				</div>
 				<div class="social-listing">
 					<a href="https://www.facebook.com/people/Patajac-Instrukcije/61556733622014/" target="_blank"
 						rel="noopener noreferrer" class="social-link">
-						<img src="../assets/icons/fb.svg" class="icon" />
+						<img src="../assets/icons/fb.svg" class="icon" alt="facebook icon" />
 						<span class="social-label">Patajac Instrukcije</span>
 					</a>
 				</div>

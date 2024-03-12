@@ -118,6 +118,10 @@ main {
 }
 
 #offers {
+	h2 {
+		width: fit-content;
+	}
+
 	#offers-tech {
 		display: flex;
 		justify-content: space-between;

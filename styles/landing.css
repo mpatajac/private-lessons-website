@@ -220,6 +220,10 @@ main li:not(:last-child) {
   margin-bottom: 0.5rem;
 }
 
+#offers h2 {
+  width: -moz-fit-content;
+  width: fit-content;
+}
 #offers #offers-tech {
   display: flex;
   justify-content: space-between;
