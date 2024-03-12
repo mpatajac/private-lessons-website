@@ -11,6 +11,11 @@ html {
 		// TODO: keep primary everywhere?
 		color: base.$white;
 	}
+
+	.navbar-item {
+		margin-left: 3rem;
+		margin-right: 3rem;
+	}
 }
 
 
@@ -267,6 +272,13 @@ main {
 }
 
 @media (max-width: 1365px) {
+	.navbar {
+		.navbar-item {
+			margin-left: 1rem;
+			margin-right: 1rem;
+		}
+	}
+
 	.hero .hero-body .hero-img {
 		svg {
 			display: none;

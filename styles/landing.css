@@ -137,6 +137,10 @@ html {
 .navbar * {
   color: #FAFAFA;
 }
+.navbar .navbar-item {
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
 
 .hero {
   background-color: #3D4243;
@@ -330,6 +334,10 @@ main li:not(:last-child) {
   }
 }
 @media (max-width: 1365px) {
+  .navbar .navbar-item {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
   .hero .hero-body .hero-img svg {
     display: none;
     animation: none;
