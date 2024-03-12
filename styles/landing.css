@@ -247,6 +247,7 @@ main li:not(:last-child) {
   margin: 0 1rem;
   border-radius: 1rem;
   border: 2px solid #FFD900 !important;
+  box-shadow: 5px 5px 5px 5px #363b3c;
 }
 #offers .offer-card-list .offer-card * {
   color: #FAFAFA;
