@@ -262,8 +262,14 @@ main li:not(:last-child) {
   margin-left: 1rem;
 }
 
-.buffer {
-  height: 100vh;
+#organization strong {
+  color: #FFD900 !important;
+}
+#organization ul {
+  list-style-position: inside;
+}
+#organization h3 {
+  margin-bottom: 0.25rem;
 }
 
 @media (max-width: 1024px) {

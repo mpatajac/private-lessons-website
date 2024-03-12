@@ -172,9 +172,18 @@ main {
 	}
 }
 
-// TODO: remove
-.buffer {
-	height: 100vh;
+#organization {
+	strong {
+		color: base.$primary;
+	}
+
+	ul {
+		list-style-position: inside;
+	}
+
+	h3 {
+		margin-bottom: .25rem;
+	}
 }
 
 // Media queries

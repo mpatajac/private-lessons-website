@@ -16,17 +16,18 @@
 <body class="has-navbar-fixed-top" onload="setup()">
 	<header>
 		<nav class="navbar is-spaced is-fixed-top" role="navigation" aria-label="main navigation">
-			<!-- TODO: replace menus with section bookmarks -->
 			<div class="navbar-menu mr-6">
 				<div class="navbar-end">
 					<a href="#offers">
 						<span class="navbar-item mx-6 has-text-weight-medium is-size-4">Ponuda</span>
 					</a>
-					<span class="navbar-item mx-6 has-text-weight-medium is-size-4">Organizacija</span>
+					<a href="#organization">
+						<span class="navbar-item mx-6 has-text-weight-medium is-size-4">Organizacija</span>
+					</a>
 				</div>
 			</div>
 			<div class="navbar-brand mx-6 aos">
-				<a id="logo-container" onclick="scrollToTop()">
+				<a id="logo-container" href="#" onclick="scrollToTop()">
 					<img src="../assets/icons/logo.svg" id="logo" class="icon" />
 				</a>
 			</div>
@@ -184,6 +185,41 @@
 			</section>
 		</section>
 		<section id="organization">
+			<div class="dark">
+				<div class="section container aos-collection">
+					<h2 class="title is-4">Organizacija</h2>
+					<div>
+						<p>
+							Zbog drugih obveza, dani za koje je moguće zatražiti termin su <strong>četvrtak</strong>,
+							<strong>petak</strong> i <strong>subota</strong>, u periodu
+							<wbr>od <strong>12:00</strong> (najraniji početak termina)
+							<wbr>do <strong>23:00</strong> (najkasniji završetak termina).
+							<br>
+							Zbog lakše organizacije i veće vjerojatnosti da dobijete željeni termin vas molim da
+							pravovremeno zatražite (i po
+							potrebi otkažete) svoj termin - barem <strong>24 sata</strong> prije početka istog.
+							<br>
+							Redovnim polaznicima nudi se opcija automatske rezervacije termina.
+						</p>
+					</div>
+					<br>
+					<div>
+						<h3>Opcije za rezervaciju termina su:</h3>
+						<ul>
+							<li>termin od 1 sata ( 60 min ) &rArr; <strong>15€</strong></li>
+							<li>termin od 2 sata ( 120 min ) &rArr; <strong>25€</strong></li>
+						</ul>
+						<br>
+						<p>
+							S obzirom na prirodu gradiva koje se obrađuje, preporučuje se (i preferira) blok termin od 2
+							sata (stoga nešto manja cijena u usporedbi s dva pojedinačna sata), no i dalje je dostupna
+							verzija od jednog sata, za one kojima takva opcija više odgovara.
+							<br>
+							Prvi sat je <strong>besplatan</strong>!
+						</p>
+					</div>
+				</div>
+			</div>
 		</section>
 		<section id="about" class="section container aos-collection">
 			<h2 class="title is-4">O predavaču</h2>
