@@ -279,6 +279,7 @@ main li:not(:last-child) {
 
 #organization strong {
   color: #FFD900 !important;
+  letter-spacing: 0.02rem;
 }
 #organization h2 {
   width: -moz-fit-content;
