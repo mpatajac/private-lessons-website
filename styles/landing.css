@@ -154,8 +154,16 @@ html {
 .hero .hero-body .hero-content {
   width: 75%;
 }
-.hero .hero-body .hero-content button {
+.hero .hero-body .hero-content a {
   display: block;
+  width: -moz-fit-content;
+  width: fit-content;
+  transition: none;
+}
+.hero .hero-body .hero-content a:hover {
+  transform: none;
+}
+.hero .hero-body .hero-content button {
   background-color: #FFD900 !important;
   border-radius: 0.75rem;
   border: 2px solid #FFD900 !important;

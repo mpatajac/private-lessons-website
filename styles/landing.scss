@@ -32,12 +32,22 @@ html {
 		.hero-content {
 			width: 75%;
 
-			button {
+			a {
 				display: block;
+				width: fit-content;
+				transition: none;
+
+				&:hover {
+					transform: none;
+				}
+			}
+
+			button {
 				background-color: base.$primary;
 				border-radius: .75rem;
 				border: 2px solid base.$primary;
 				transition: transform 250ms;
+				// box-shadow: -2px 2px 0 0 base.$white;
 
 				&:hover {
 					transform: scale(1.1);
