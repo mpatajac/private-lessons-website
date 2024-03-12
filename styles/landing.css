@@ -154,6 +154,19 @@ html {
 .hero .hero-body .hero-content {
   width: 75%;
 }
+.hero .hero-body .hero-content button {
+  display: block;
+  background-color: #FFD900 !important;
+  border-radius: 0.75rem;
+  border: 2px solid #FFD900 !important;
+  transition: transform 250ms;
+}
+.hero .hero-body .hero-content button:hover {
+  transform: scale(1.1);
+}
+.hero .hero-body .hero-content button * {
+  color: #3D4243;
+}
 .hero .hero-body .hero-img {
   width: 100%;
   position: relative;

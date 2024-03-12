@@ -31,6 +31,22 @@ html {
 
 		.hero-content {
 			width: 75%;
+
+			button {
+				display: block;
+				background-color: base.$primary;
+				border-radius: .75rem;
+				border: 2px solid base.$primary;
+				transition: transform 250ms;
+
+				&:hover {
+					transform: scale(1.1);
+				}
+
+				* {
+					color: base.$black;
+				}
+			}
 		}
 
 		.hero-img {
