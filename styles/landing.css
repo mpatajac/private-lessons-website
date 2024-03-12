@@ -266,6 +266,9 @@ main li:not(:last-child) {
 #offers .offer-card-list .offer-card .card-header .icon {
   margin-top: 0.5rem;
 }
+#offers #offers-other {
+  padding-top: 0;
+}
 
 #free-class {
   display: flex;
