@@ -129,6 +129,8 @@ footer.footer h3.subtitle {
 }
 html {
   scroll-padding-top: 5rem;
+  scrollbar-width: thin;
+  scrollbar-color: #FFD900 #3D4243;
 }
 
 .navbar {
