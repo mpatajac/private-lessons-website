@@ -3,14 +3,13 @@
 html {
 	scroll-padding-top: base.$navbar-vertical-offset;
 	scrollbar-width: thin;
-	scrollbar-color: base.$gold base.$black;
+	scrollbar-color: base.$main base.$dark;
 }
 
 .navbar {
 	transition: box-shadow 250ms;
 
 	* {
-		// TODO: keep primary everywhere?
 		color: base.$white;
 	}
 
@@ -22,7 +21,7 @@ html {
 
 
 .hero {
-	background-color: base.$black;
+	background-color: base.$dark;
 
 	.hero-body {
 		display: flex;
@@ -32,8 +31,8 @@ html {
 			color: base.$white;
 		}
 
-		.is-primary {
-			color: base.$primary;
+		.is-main {
+			color: base.$main;
 		}
 
 		.hero-content {
@@ -50,9 +49,9 @@ html {
 			}
 
 			button {
-				background-color: base.$primary;
+				background-color: base.$main;
 				border-radius: .75rem;
-				border: 2px solid base.$primary;
+				border: 2px solid base.$main;
 				transition: transform 250ms;
 				// box-shadow: -2px 2px 0 0 base.$white;
 
@@ -61,7 +60,7 @@ html {
 				}
 
 				* {
-					color: base.$black;
+					color: base.$dark;
 				}
 			}
 		}
@@ -91,7 +90,7 @@ html {
 }
 
 div.dark {
-	background-color: base.$black;
+	background-color: base.$dark;
 
 	* {
 		color: base.$white;
@@ -108,7 +107,7 @@ main {
 		font-weight: 500;
 
 		&::marker {
-			color: base.$primary;
+			color: base.$main;
 		}
 
 		&:not(:last-child) {
@@ -153,11 +152,11 @@ main {
 		border-radius: 1rem 0 0 1rem;
 
 		.offer-card {
-			background-color: base.$black;
+			background-color: base.$dark;
 			padding: 0 1rem;
 			margin: 0 1rem;
 			border-radius: 1rem;
-			border: 2px solid base.$primary;
+			border: 2px solid base.$main;
 			box-shadow: 5px 5px 5px 5px #363b3c;
 
 			* {
@@ -167,7 +166,7 @@ main {
 			.card-header {
 				flex-direction: column;
 				align-items: center;
-				border-bottom: 2px solid base.$primary;
+				border-bottom: 2px solid base.$main;
 
 				.icon {
 					margin-top: .5rem;
@@ -200,7 +199,7 @@ main {
 
 #organization {
 	strong {
-		color: base.$primary;
+		color: base.$main;
 		letter-spacing: .02rem;
 	}
 
