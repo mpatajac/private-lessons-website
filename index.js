@@ -36,13 +36,21 @@ function scrollToTop() {
 // --------------------------------------------------
 
 function initAOSObserver() {
-	return new IntersectionObserver((entries) => {
+	const intersectionCallback = (entries) => {
 		for (const entry of entries) {
 			if (entry.isIntersecting) {
 				entry.target.classList.add("animated");
 			}
 		}
-	})
+	};
+
+	// on larger screens, wait until a major part of the element is visible
+	// on smaller screens, only wait for a portion of the element to be visible
+	const intersectionOptions = {
+		threshold: window.visualViewport.width >= 768 ? 0.6 : 0.25
+	};
+
+	return new IntersectionObserver(intersectionCallback, intersectionOptions);
 }
 
 // Apply logic so specified elements can perform animation when they are scrolled to
