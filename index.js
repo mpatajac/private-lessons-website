@@ -68,7 +68,7 @@ function applyAOS(singleElems, elemCollections) {
 
 			if (isElemVisible(elem)) {
 				// add index alongside class to delay animation
-				elem.classList.add("animated", `animated-stagger-${i}`);
+				elem.classList.add("animated");
 			}
 		}
 	}

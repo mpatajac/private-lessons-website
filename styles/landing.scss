@@ -329,34 +329,23 @@ main {
 	opacity: 1;
 }
 
-@mixin animation-stagger-delay($elemCount) {
-	animation-delay: 250ms * $elemCount;
+@mixin animation-stagger-delay() {
+	$max-aos-collection-items: 10;
+	$aos-collection-item-delay: 250ms;
+
+	// on smaller screens, items are already vertically stacked
+	// so there will be "natural stagger", no need to add extra delay
+	@media (min-width: 768px) {
+		@for $elemCount from 0 through $max-aos-collection-items - 1 {
+			.aos-collection :nth-child(#{$elemCount} of .animated) {
+				animation-delay: $aos-collection-item-delay * $elemCount;
+			}
+		}
+	}
 }
 
-// TODO: undo on small screens (since elements are usually vertically stacked and thus not displayed simultaneously
-.animated-stagger-0 {
-	@include animation-stagger-delay(0);
-}
+@include animation-stagger-delay();
 
-.animated-stagger-1 {
-	@include animation-stagger-delay(1);
-}
-
-.animated-stagger-2 {
-	@include animation-stagger-delay(2);
-}
-
-.animated-stagger-3 {
-	@include animation-stagger-delay(3);
-}
-
-.animated-stagger-4 {
-	@include animation-stagger-delay(4);
-}
-
-.animated-stagger-5 {
-	@include animation-stagger-delay(5);
-}
 
 @keyframes animate {
 	0% {

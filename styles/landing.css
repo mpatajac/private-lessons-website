@@ -377,30 +377,38 @@ main li:not(:last-child) {
   opacity: 1;
 }
 
-.animated-stagger-0 {
-  animation-delay: 0ms;
+@media (min-width: 768px) {
+  .aos-collection :nth-child(0 of .animated) {
+    animation-delay: 0ms;
+  }
+  .aos-collection :nth-child(1 of .animated) {
+    animation-delay: 250ms;
+  }
+  .aos-collection :nth-child(2 of .animated) {
+    animation-delay: 500ms;
+  }
+  .aos-collection :nth-child(3 of .animated) {
+    animation-delay: 750ms;
+  }
+  .aos-collection :nth-child(4 of .animated) {
+    animation-delay: 1000ms;
+  }
+  .aos-collection :nth-child(5 of .animated) {
+    animation-delay: 1250ms;
+  }
+  .aos-collection :nth-child(6 of .animated) {
+    animation-delay: 1500ms;
+  }
+  .aos-collection :nth-child(7 of .animated) {
+    animation-delay: 1750ms;
+  }
+  .aos-collection :nth-child(8 of .animated) {
+    animation-delay: 2000ms;
+  }
+  .aos-collection :nth-child(9 of .animated) {
+    animation-delay: 2250ms;
+  }
 }
-
-.animated-stagger-1 {
-  animation-delay: 250ms;
-}
-
-.animated-stagger-2 {
-  animation-delay: 500ms;
-}
-
-.animated-stagger-3 {
-  animation-delay: 750ms;
-}
-
-.animated-stagger-4 {
-  animation-delay: 1000ms;
-}
-
-.animated-stagger-5 {
-  animation-delay: 1250ms;
-}
-
 @keyframes animate {
   0% {
     opacity: 0;
