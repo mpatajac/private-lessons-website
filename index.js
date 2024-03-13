@@ -6,14 +6,14 @@ function setup() {
 	const aosSingleElems = document.getElementsByClassName("aos");
 	const aosCollectionElems = document.getElementsByClassName("aos-collection");
 
+	const aosObserver = initAOSObserver();
+	applyAOSObserver(aosObserver, aosSingleElems, aosCollectionElems);
+
 	window.onscroll = () => {
 		handleNavbarUnderline(navbar);
-		applyAOS(aosSingleElems, aosCollectionElems);
 	}
 
 	handleNavbarUnderline(navbar);
-	// check on page load if any elements need to be shown
-	applyAOS(aosSingleElems, aosCollectionElems);
 }
 
 // --------------------------------------------------
@@ -35,41 +35,27 @@ function scrollToTop() {
 
 // --------------------------------------------------
 
-// Checks if element satisfies all criteria (namely, vertical position) in order to be displayed
-function isElemVisible(elem) {
-	// `elem.getBoundingClientRect().bottom` gets element's bottom's distance from the top of the viewport
-	// so we need to check if the bottom has (roughly) reached viewport bottom (i.e. completely in viewport)
-	/*
-		TODO?: re-check this after all the content is done to see if it behaves nicely 
-			(e.g. maybe check `elem.getBoundingClientRect().top` instead of `.bottom` on smaller screens) 
-	*/
-	const viewportBottom = window.screen.availHeight;
-	const elementBottom = elem.getBoundingClientRect().bottom;
-
-	return viewportBottom > elementBottom;
-};
-
+function initAOSObserver() {
+	return new IntersectionObserver((entries) => {
+		for (const entry of entries) {
+			if (entry.isIntersecting) {
+				entry.target.classList.add("animated");
+			}
+		}
+	})
+}
 
 // Apply logic so specified elements can perform animation when they are scrolled to
-function applyAOS(singleElems, elemCollections) {
+function applyAOSObserver(observer, singleElems, elemCollections) {
 	// singular elements
 	for (const elem of singleElems) {
-		if (isElemVisible(elem)) {
-			elem.classList.add("animated");
-		}
+		observer.observe(elem);
 	}
 
 	// element collections
 	for (const parentElem of elemCollections) {
-		let childElems = parentElem.children;
-
-		for (let i = 0; i < childElems.length; ++i) {
-			const elem = childElems[i];
-
-			if (isElemVisible(elem)) {
-				// add index alongside class to delay animation
-				elem.classList.add("animated");
-			}
+		for (const elem of parentElem.children) {
+			observer.observe(elem);
 		}
 	}
 }
