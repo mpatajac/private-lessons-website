@@ -1,6 +1,10 @@
 @use 'base';
 
 .navbar {
+	* {
+		color: base.$primary;
+	}
+
 	.navbar-brand {
 		a:hover {
 			color: base.$primary;

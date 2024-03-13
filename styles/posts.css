@@ -38,9 +38,6 @@ a:hover {
 .navbar {
   background-color: #3D4243;
 }
-.navbar * {
-  color: #FFD900;
-}
 .navbar #logo-container {
   display: flex;
   justify-content: center;
@@ -52,7 +49,7 @@ a:hover {
 }
 
 .navbar.has-shadow {
-  box-shadow: 0 2px 0 0 #FFD900;
+  box-shadow: 0 2px 0 0 #FFD900 !important;
 }
 
 main strong {
@@ -83,10 +80,10 @@ footer.footer h3.subtitle {
   color: #FFD900 !important;
 }
 
-.highlight-underline {
+.highlight-underline, .highlight-underline-shorter {
   position: relative;
 }
-.highlight-underline::after {
+.highlight-underline::after, .highlight-underline-shorter::after {
   content: "";
   background-color: #FFD900 !important;
   width: 120%;
@@ -94,6 +91,10 @@ footer.footer h3.subtitle {
   position: absolute;
   bottom: -10px;
   left: 0;
+}
+
+.highlight-underline-shorter::after {
+  width: 100%;
 }
 
 @media (max-width: 1024px) {
@@ -125,6 +126,9 @@ footer.footer h3.subtitle {
   footer.footer .social-link {
     margin-bottom: 0;
   }
+}
+.navbar * {
+  color: #FFD900 !important;
 }
 .navbar .navbar-brand a:hover {
   color: #FFD900 !important;

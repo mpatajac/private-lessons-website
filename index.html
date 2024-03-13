@@ -1,61 +1,285 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hr">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="title" content="Patajac Instrukcije - instrukcije i tečajevi iz programiranja">
+	<meta name="description"
+		content="Instrukcije i tečajevi iz programiranja u Osijeku za sve uzraste i razine znanja. Prvi sat besplatan!">
+	<meta name="keywords"
+		content="instrukcije, programiranje, osijek, patajac, tečaj, instrukcije iz programiranja, instrukcije iz programiranja osijek">
+	<meta name="robots" content="index, follow">
+	<meta name="language" content="Croatian">
+	<meta name="author" content="Matija Patajac">
 	<link rel="icon" href="../assets/icons/logo.svg" sizes="any" type="image/svg+xml">
 	<!-- bulma -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 	<!-- custom style -->
 	<link rel="stylesheet" href="./styles/landing.css">
-	<title>Patajac Instrukcije</title>
+	<script src="./index.js"></script>
+	<title>Patajac Instrukcije - instrukcije i tečajevi iz programiranja</title>
 </head>
 
-<body class="has-navbar-fixed-top">
+<body class="has-navbar-fixed-top" onload="setup()">
 	<header>
-		<nav class="navbar has-shadow is-spaced is-fixed-top" role="navigation" aria-label="main navigation">
-			<!-- TODO: replace menus with section bookmarks -->
+		<nav id="navbar" class="navbar is-spaced is-fixed-top" role="navigation" aria-label="main navigation">
 			<div class="navbar-menu mr-6">
 				<div class="navbar-end">
-					<span class="navbar-item mx-6 has-text-weight-medium is-size-4">Patajac</span>
+					<a href="#offers">
+						<span class="navbar-item has-text-weight-medium is-size-4">Ponuda</span>
+					</a>
+					<a href="#organization">
+						<span class="navbar-item has-text-weight-medium is-size-4">Organizacija</span>
+					</a>
 				</div>
 			</div>
-			<div class="navbar-brand mx-6">
-				<a href="../index.html" id="logo-container">
-					<img src="../assets/icons/logo.svg" id="logo" class="icon" />
+			<div class="navbar-brand mx-6 aos">
+				<a id="logo-container" href="#" onclick="scrollToTop()">
+					<img src="../assets/icons/logo.svg" id="logo" class="icon" alt="company logo" />
 				</a>
 			</div>
 			<div class="navbar-menu ml-6">
 				<div class="navbar-start">
-					<span class="navbar-item mx-6 has-text-weight-medium is-size-4">Instrukcije</span>
+					<a href="#contact">
+						<span class="navbar-item has-text-weight-medium is-size-4">Kontakt</span>
+					</a>
+					<a href="./posts.html">
+						<span class="navbar-item has-text-weight-medium is-size-4">Obavijesti</span>
+					</a>
 				</div>
 			</div>
 		</nav>
 	</header>
-	<main class="container column is-full mt-6 p-4 is-fullheight">
-		<!-- TODO: add landing page content -->
-		<div class="content">
-			<h1 class="title">Stranica trenutno u izradi.</h1>
-			<p>Za više informacija pogledajte <a href="./posts.html">obavijesti</a>.</p>
+	<section class="hero is-large">
+		<div class="hero-body aos-collection">
+			<div class="hero-content">
+				<h1 class="title is-primary is-1 is-spaced">Patajac Instrukcije</h1>
+				<p class="subtitle is-3">
+					Instrukcije i tečajevi iz programiranja za sve uzraste i razine znanja.
+				</p>
+				<a href="#free-class">
+					<span class="subtitle is-3">
+						Prvi sat besplatan!
+					</span>
+				</a>
+				<a class="mt-6" href="#contact">
+					<button class="button is-large title">
+						<strong>Dogovori termin</strong>
+					</button>
+				</a>
+			</div>
+			<div class="hero-img">
+				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+					style="isolation:isolate" viewBox="293.5 25.5 13 29" width="13pt" height="29pt">
+					<g>
+						<!-- inlined to enable animation -->
+						<path class="steam steam-1"
+							d=" M 300 70 C 298.049 68.049 298 67.76 298 65 Q 298 62.24 300 60 Q 302 57.76 302 55 C 302 52.24 301.951 51.951 300 50"
+							fill="none" vector-effect="non-scaling-stroke" stroke-width="3" stroke="rgb(255,217,0)"
+							stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="3" />
+						<path class="steam steam-2"
+							d=" M 292 65 C 290.049 63.049 290 62.76 290 60 Q 290 57.24 292 55 Q 294 52.76 294 50 C 294 47.24 293.951 46.951 292 45"
+							fill="none" vector-effect="non-scaling-stroke" stroke-width="3" stroke="rgb(255,217,0)"
+							stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="3" />
+						<path class="steam steam-3"
+							d=" M 308 65 C 306.049 63.049 306 62.76 306 60 Q 306 57.24 308 55 Q 310 52.76 310 50 C 310 47.24 309.951 46.951 308 45"
+							fill="none" vector-effect="non-scaling-stroke" stroke-width="3" stroke="rgb(255,217,0)"
+							stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="3" />
+					</g>
+				</svg>
+				<img src="./assets/hero-img-min.svg"
+					alt="illustration of a table with a keyboard, monitor, notepad and a coffee cup">
+			</div>
 		</div>
+	</section>
+	<main>
+		<section id="offers">
+			<section class="section container">
+				<p class="subtitle has-text-centered aos">
+					Bilo da ste učenik/student koji se muči s programiranjem na informatici/kolegiju, programer koji
+					želi dodati novu tehnologiju u svoj toolbox ili netko tko se tek želi upoznati sa svijetom
+					programiranja, <strong>Patajac Instrukcije</strong> pravo je mjesto za vas!
+					<br><br>
+					Kontinuiranim radom, prateći vaš tempo i potrebni intenzitet, personaliziranim pristupom i u
+					opuštenoj, neformalnoj atmosferi, zajedno ćemo unaprijediti vaše programersko znanje i vještine.
+				</p>
+			</section>
+			<div class="dark">
+				<div class="section container">
+					<h2 class="title is-4 highlight-underline">Područja i tehnologije</h2>
+					<div id="offers-tech">
+						<div id="offers-tech-desc" class="column is-one-third">
+							<p>Možemo obrađivati neko od raznih područja programiranja,
+								kao što
+								su:</p>
+							<ul class="aos-collection">
+								<li>programiranje opće primjene<br>(osnove programiranja)</li>
+								<li>klijentsko web programiranje</li>
+								<li>poslužiteljsko web programiranje</li>
+								<li>baze podataka</li>
+								<li>strukture podataka i algoritmi</li>
+								<li>funkcijsko programiranje</li>
+							</ul>
+						</div>
+						<div id="offers-tech-list">
+							<p>... ili se fokusirati na konkretan jezik ili tehnologiju:</p>
+							<div class="offer-card-list column aos-collection">
+								<div class="card offer-card">
+									<div class="card-header">
+										<h3 class="card-header-title">Opće primjene</h3>
+									</div>
+									<div class="card-content">
+										<ul>
+											<li>Python</li>
+											<li>C/C++</li>
+											<li>Rust</li>
+										</ul>
+									</div>
+								</div>
+								<div class="card offer-card">
+									<div class="card-header">
+										<h3 class="card-header-title">Web aplikacije</h3>
+									</div>
+									<div class="card-content">
+										<ul>
+											<li>HTML</li>
+											<li>CSS</li>
+											<li>JavaScript</li>
+										</ul>
+									</div>
+								</div>
+								<div class="card offer-card">
+									<div class="card-header">
+										<h3 class="card-header-title">Funkcijski pristup</h3>
+									</div>
+									<div class="card-content">
+										<ul>
+											<li>Haskell</li>
+											<li>Elm</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="dark">
+				<section id="offers-other" class="section container">
+					<p>
+						Ako vas zanima nešto što nije dosad navedeno, slobodno pošaljite upit - navedene su samo
+						najčešće, a
+						ne jedine mogućnosti. U slučaju da se radi o nečem s čim nisam upoznat, otvorene su i opcije
+						<strong>zajedničkog učenja</strong> (study buddy nikad nije na odmet) kao i <strong>povremenih
+							konzultacija</strong>.
+					</p>
+				</section>
+			</div>
+			<section class="section container" id="free-class">
+				<div class="column is-two-thirds-widescreen is-half-desktop aos-collection" id="free-class-questions">
+					<p class="title is-4">"Što ako si ne odgovaramo?"</p>
+					<p class="title is-4">"Što ako mu ne leži gradivo koje mi treba?"</p>
+					<p class="title is-4">"Što ako mi ne odgovara njegov stil objašnjavanja?"</p>
+				</div>
+				<p class="column aos">
+					Kako bi lakše razriješili takva pitanja (koja su sasvim prirodna i razumna), svim polaznicima je
+					prvi sat <strong>besplatan</strong> -
+					nađemo se, upoznamo, utvrdimo kakvo vam je predznanje (<em>i "nikakvo" je sasvim okej</em>) te
+					prođemo nešto
+					traženog gradiva; na
+					taj način ćete dobiti odgovore na vaša pitanja i jasniju sliku o tome želite li nastaviti našu
+					suradnju.
+				</p>
+			</section>
+		</section>
+		<section id="organization">
+			<div class="dark">
+				<div class="section container aos-collection">
+					<h2 class="title is-4 highlight-underline">Organizacija</h2>
+					<div>
+						<p>
+							Zbog drugih obveza, dani za koje je moguće zatražiti termin su <strong>četvrtak</strong>,
+							<strong>petak</strong> i <strong>subota</strong>, u periodu
+							<wbr>od <strong>12:00</strong> (najraniji početak termina)
+							<wbr>do <strong>23:00</strong> (najkasniji završetak termina).
+							<br>
+							Zbog lakše organizacije i veće vjerojatnosti da dobijete željeni termin vas molim da
+							pravovremeno zatražite (i po
+							potrebi otkažete) svoj termin - barem <strong>24 sata</strong> prije početka istog.
+							<br>
+							Redovnim polaznicima nudi se opcija automatske rezervacije termina.
+						</p>
+					</div>
+					<br>
+					<div>
+						<h3>Opcije za rezervaciju termina su:</h3>
+						<ul>
+							<li>termin od 1 sata ( 60 min ) &rArr; <strong>15&nbsp;€</strong></li>
+							<li>termin od 2 sata ( 120 min ) &rArr; <strong>25&nbsp;€</strong></li>
+						</ul>
+						<br>
+						<p>
+							S obzirom na prirodu gradiva koje se obrađuje, preporučuje se (i preferira) blok termin od 2
+							sata (stoga nešto manja cijena u usporedbi s dva pojedinačna sata), no i dalje je dostupna
+							verzija od jednog sata, za one kojima takva opcija više odgovara.
+						</p>
+						<br>
+						<p>
+							Instrukcije i tečajevi provode se u <strong>Osijeku</strong>.
+							Moguće je i provođenje u Donjem Miholjcu, prema nešto drugačijim uvjetima (po dogovoru).
+							<br>
+							Prvi sat je <strong>besplatan</strong>!
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="about" class="section container aos-collection">
+			<h2 class="title is-4 highlight-underline">O predavaču</h2>
+			<p>
+				Zainteresiran za programiranje još od osnovnoškolskih dana, ozbiljno sam se počeo njime baviti krajem
+				srednje škole i
+				odlukom o upisu studija Matematika i računarstvo na tadašnjem Odjelu za matematiku osječkog Sveučilišta.
+				Po završetku
+				preddiplomskog studija ušao u IT sektor kao programer web aplikacija, a nakon dvije godine odlučio sam
+				se upustiti u
+				neke nove avanture.
+				<br>
+				Da nisam programer, vjerojatno bih bio profesor - baš mi se iz tog razloga kombinacija tih dviju stvari
+				u obliku
+				instrukcija pokazala kao pun pogodak.
+			</p>
+			<br>
+			<p>
+				Pored brojnih amaterskih instrukcijskih poduhvata (pomoć srednjoškolskim kolegama u izradi programerskih
+				projekata,
+				fakultetskim kolegama sa slabijim programerskim predznanjem u usvajanju osnova i općenito pomaganje
+				prijateljima u
+				programerskim i sličnim područjima), također sam dvije godine radio kao demonstrator (čitaj: držao
+				grupne instrukcije za
+				studente nižih godina u organizaciji fakulteta) za osnovne programerske kolegije na Fakultetu
+				primijenjene matematike i
+				informatike (bivšem Odjelu za matematiku).
+			</p>
+		</section>
 	</main>
 	<footer class="footer mt-auto">
-		<div class="container is-max-desktop is-flex is-justify-content-space-between">
+		<div id="contact" class="container is-max-desktop is-flex is-justify-content-space-between aos-collection">
 			<h2 class="title is-4">Kontakt</h2>
 			<div class="is-flex is-justify-content-space-between is-flex-direction-column">
 				<h3 class="subtitle highlight-underline">Društvene mreže</h3>
 				<div class="social-listing">
 					<a href="https://instagram.com/patajacinstrukcije" target="_blank" rel="noopener noreferrer"
 						class="social-link">
-						<img src="../assets/icons/ig.svg" class="icon" />
+						<img src="../assets/icons/ig.svg" class="icon" alt="instagram icon" />
 						<span class="social-label">@patajacinstrukcije</span>
 					</a>
 				</div>
 				<div class="social-listing">
 					<a href="https://www.facebook.com/people/Patajac-Instrukcije/61556733622014/" target="_blank"
 						rel="noopener noreferrer" class="social-link">
-						<img src="../assets/icons/fb.svg" class="icon" />
+						<img src="../assets/icons/fb.svg" class="icon" alt="facebook icon" />
 						<span class="social-label">Patajac Instrukcije</span>
 					</a>
 				</div>
