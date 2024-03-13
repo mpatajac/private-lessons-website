@@ -10,7 +10,7 @@ $pale-white: #FAFAFA;
 // colors
 $white: $pale-white;
 $dark: $charcoal-gray;
-$primary: $gold !important;
+$main: $gold;
 $bland-dark: rgba($dark, .6);
 
 // fonts
@@ -85,7 +85,7 @@ a {
 
 
 .navbar.has-shadow {
-	box-shadow: 0 2px 0 0 $primary;
+	box-shadow: 0 2px 0 0 $main;
 }
 
 main {
@@ -120,7 +120,7 @@ footer.footer {
 		margin-left: .5rem;
 
 		&:hover {
-			color: $primary;
+			color: $main;
 		}
 	}
 }
@@ -132,7 +132,7 @@ footer.footer {
 
 	&::after {
 		content: '';
-		background-color: $primary;
+		background-color: $main;
 		width: 120%;
 		height: .1em;
 		position: absolute;

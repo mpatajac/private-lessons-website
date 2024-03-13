@@ -2,19 +2,19 @@
 
 .navbar {
 	* {
-		color: base.$primary;
+		color: base.$main;
 	}
 
 	.navbar-brand {
 		a:hover {
-			color: base.$primary;
+			color: base.$main;
 		}
 	}
 
 	.navbar-start,
 	.navbar-end {
 		.navbar-item {
-			color: base.$primary;
+			color: base.$main;
 			letter-spacing: .25em;
 		}
 	}
@@ -44,7 +44,7 @@ span.subtitle {
 	transition: border-bottom-color 200ms 50ms;
 
 	&:hover {
-		border-bottom-color: base.$primary;
+		border-bottom-color: base.$main;
 	}
 
 	h1.title {

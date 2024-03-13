@@ -10,7 +10,6 @@ html {
 	transition: box-shadow 250ms;
 
 	* {
-		// TODO: keep primary everywhere?
 		color: base.$white;
 	}
 
@@ -32,8 +31,8 @@ html {
 			color: base.$white;
 		}
 
-		.is-primary {
-			color: base.$primary;
+		.is-main {
+			color: base.$main;
 		}
 
 		.hero-content {
@@ -50,9 +49,9 @@ html {
 			}
 
 			button {
-				background-color: base.$primary;
+				background-color: base.$main;
 				border-radius: .75rem;
-				border: 2px solid base.$primary;
+				border: 2px solid base.$main;
 				transition: transform 250ms;
 				// box-shadow: -2px 2px 0 0 base.$white;
 
@@ -108,7 +107,7 @@ main {
 		font-weight: 500;
 
 		&::marker {
-			color: base.$primary;
+			color: base.$main;
 		}
 
 		&:not(:last-child) {
@@ -157,7 +156,7 @@ main {
 			padding: 0 1rem;
 			margin: 0 1rem;
 			border-radius: 1rem;
-			border: 2px solid base.$primary;
+			border: 2px solid base.$main;
 			box-shadow: 5px 5px 5px 5px #363b3c;
 
 			* {
@@ -167,7 +166,7 @@ main {
 			.card-header {
 				flex-direction: column;
 				align-items: center;
-				border-bottom: 2px solid base.$primary;
+				border-bottom: 2px solid base.$main;
 
 				.icon {
 					margin-top: .5rem;
@@ -200,7 +199,7 @@ main {
 
 #organization {
 	strong {
-		color: base.$primary;
+		color: base.$main;
 		letter-spacing: .02rem;
 	}
 
