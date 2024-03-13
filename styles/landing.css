@@ -420,6 +420,13 @@ main li:not(:last-child) {
     transform: translate(0, 0);
   }
 }
+.hero .hero-body .animated .hero-content {
+  animation-delay: 0;
+}
+.hero .hero-body .animated .hero-img {
+  animation-delay: 250ms;
+}
+
 .steam {
   opacity: 1;
   animation: steam-animation 10s linear 0s infinite;

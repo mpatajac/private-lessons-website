@@ -372,6 +372,17 @@ main {
 	}
 }
 
+// reduce animation delay on hero elements (which should be instantly visible)
+.hero .hero-body .animated {
+	.hero-content {
+		animation-delay: 0;
+	}
+
+	.hero-img {
+		animation-delay: 250ms;
+	}
+}
+
 // Hero img steam animation
 
 .steam {
