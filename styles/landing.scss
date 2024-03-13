@@ -230,8 +230,14 @@ main {
 // Media queries
 
 @media (max-width: 1024px) {
-	.hero-img {
-		display: none !important;
+	.hero .hero-body {
+		.hero-img {
+			display: none !important;
+		}
+
+		.hero-content {
+			width: 100%;
+		}
 	}
 
 	// no bookmarks on mobile

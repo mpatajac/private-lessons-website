@@ -308,8 +308,11 @@ main li:not(:last-child) {
 }
 
 @media (max-width: 1024px) {
-  .hero-img {
+  .hero .hero-body .hero-img {
     display: none !important;
+  }
+  .hero .hero-body .hero-content {
+    width: 100%;
   }
   .bookmark {
     padding-top: 0;
