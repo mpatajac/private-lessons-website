@@ -344,7 +344,7 @@ main {
 
 @mixin animation-stagger-delay() {
 	$max-aos-collection-items: 10;
-	$aos-collection-item-delay: 250ms;
+	$aos-collection-item-delay: 150ms;
 
 	// on smaller screens, items are already vertically stacked
 	// so there will be "natural stagger", no need to add extra delay

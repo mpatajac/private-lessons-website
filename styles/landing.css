@@ -383,31 +383,31 @@ main li:not(:last-child) {
     animation-delay: 0ms;
   }
   .aos-collection :nth-child(1 of .animated) {
-    animation-delay: 250ms;
+    animation-delay: 150ms;
   }
   .aos-collection :nth-child(2 of .animated) {
-    animation-delay: 500ms;
+    animation-delay: 300ms;
   }
   .aos-collection :nth-child(3 of .animated) {
-    animation-delay: 750ms;
+    animation-delay: 450ms;
   }
   .aos-collection :nth-child(4 of .animated) {
-    animation-delay: 1000ms;
+    animation-delay: 600ms;
   }
   .aos-collection :nth-child(5 of .animated) {
-    animation-delay: 1250ms;
+    animation-delay: 750ms;
   }
   .aos-collection :nth-child(6 of .animated) {
-    animation-delay: 1500ms;
+    animation-delay: 900ms;
   }
   .aos-collection :nth-child(7 of .animated) {
-    animation-delay: 1750ms;
+    animation-delay: 1050ms;
   }
   .aos-collection :nth-child(8 of .animated) {
-    animation-delay: 2000ms;
+    animation-delay: 1200ms;
   }
   .aos-collection :nth-child(9 of .animated) {
-    animation-delay: 2250ms;
+    animation-delay: 1350ms;
   }
 }
 @keyframes animate {
