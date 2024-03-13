@@ -9,9 +9,9 @@ $pale-white: #FAFAFA;
 
 // colors
 $white: $pale-white;
-$black: $charcoal-gray;
+$dark: $charcoal-gray;
 $primary: $gold !important;
-$bland-black: rgba($black, .6);
+$bland-dark: rgba($dark, .6);
 
 // fonts
 $main-font: "Poppins", sans-serif;
@@ -39,7 +39,7 @@ html {
 
 // set colors
 * {
-	color: $black;
+	color: $dark;
 }
 
 // fix navbar covering content
@@ -67,7 +67,7 @@ a {
 }
 
 .navbar {
-	background-color: $black;
+	background-color: $dark;
 
 	// center logo in wrapping link
 	#logo-container {
@@ -90,13 +90,13 @@ a {
 
 main {
 	strong {
-		color: $black;
+		color: $dark;
 	}
 }
 
 
 footer.footer {
-	background-color: $black !important;
+	background-color: $dark !important;
 	padding-bottom: 2rem;
 
 	* {
