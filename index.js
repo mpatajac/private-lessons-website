@@ -1,14 +1,17 @@
 function setup() {
+	// navbar (underline toggle) - pre-fetched to avoid refetching on every scroll event
+	const navbar = document.getElementById("navbar");
+
 	// "animate-on-scroll" elements - pre-fetched to avoid refetching on every scroll event
 	const aosSingleElems = document.getElementsByClassName("aos");
 	const aosCollectionElems = document.getElementsByClassName("aos-collection");
 
 	window.onscroll = () => {
-		// TODO: add check on page load
-		handleNavbarUnderline();
+		handleNavbarUnderline(navbar);
 		applyAOS(aosSingleElems, aosCollectionElems);
 	}
 
+	handleNavbarUnderline(navbar);
 	// check on page load if any elements need to be shown
 	applyAOS(aosSingleElems, aosCollectionElems);
 }
@@ -17,17 +20,10 @@ function setup() {
 
 
 // Add or remove navbar shadow depending on whether page is scrolled or not
-function handleNavbarUnderline() {
-	// NOTE: one (and only one) navbar should exist, so indexing should be fine
-	const navbar = document.getElementsByClassName("navbar")[0];
-
+function handleNavbarUnderline(navbar) {
 	// window.scrollY > 0 => page was scrolled from initial position
 	// shadow should be present when page is scrolled
-	if (window.scrollY > 0) {
-		navbar.classList.add("has-shadow");
-	} else {
-		navbar.classList.remove("has-shadow");
-	}
+	navbar.classList.toggle("has-shadow", window.scrollY > 0);
 }
 
 
