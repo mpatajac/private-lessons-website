@@ -54,6 +54,16 @@ span.subtitle {
 	}
 }
 
+main {
+	.content {
+		a {
+			color: base.$dark;
+			font-weight: 500;
+			text-decoration: underline solid base.$main 3px;
+		}
+	}
+}
+
 // smaller screens
 @media (max-width: 768px) {
 

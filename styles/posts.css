@@ -162,6 +162,13 @@ span.subtitle {
   margin-bottom: 0.5rem;
 }
 
+main .content a {
+  color: #3D4243;
+  font-weight: 500;
+  -webkit-text-decoration: underline solid #FFD900 3px;
+          text-decoration: underline solid #FFD900 3px;
+}
+
 @media (max-width: 768px) {
   .post-info, .post-summary {
     flex-direction: column;
