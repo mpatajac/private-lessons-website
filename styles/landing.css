@@ -346,6 +346,9 @@ main li:not(:last-child) {
     margin-top: 1rem;
     text-align: left;
   }
+  #organization ul li {
+    padding-left: 0.75rem;
+  }
 }
 @media (max-width: 1365px) {
   .navbar .navbar-item {
