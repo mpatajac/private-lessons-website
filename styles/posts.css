@@ -52,11 +52,11 @@ main strong {
 }
 
 footer.footer {
-  background-color: #3D4243 !important;
+  background-color: #3D4243;
   padding-bottom: 2rem;
 }
 footer.footer * {
-  color: #FAFAFA !important;
+  color: #FAFAFA;
 }
 footer.footer h3.subtitle {
   width: -moz-fit-content;
