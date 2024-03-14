@@ -82,6 +82,7 @@ footer.footer h3.subtitle {
   content: "";
   background-color: #FFD900;
   width: 120%;
+  max-width: 90vw;
   height: 0.1em;
   position: absolute;
   bottom: -10px;
